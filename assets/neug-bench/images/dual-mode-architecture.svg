@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="Inter,Helvetica Neue,Arial,sans-serif">
+  <defs>
+    <linearGradient id="neuGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+    <linearGradient id="appGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="clientGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrowGray" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="420" rx="12" fill="#f8fafc"/>
+
+  <!-- LEFT: Embedded Mode -->
+  <text x="195" y="38" text-anchor="middle" font-size="16" font-weight="700" fill="#1e293b">Embedded Mode</text>
+  <text x="195" y="56" text-anchor="middle" font-size="11" fill="#64748b">in-process, zero-overhead</text>
+
+  <rect x="45" y="72" width="300" height="290" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="60" y="93" font-size="11" fill="#94a3b8" font-weight="600">YOUR PYTHON PROCESS</text>
+
+  <rect x="70" y="108" width="250" height="60" rx="8" fill="url(#appGrad)" filter="url(#shadow)"/>
+  <text x="195" y="135" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">Application Code</text>
+  <text x="195" y="155" text-anchor="middle" font-size="11" fill="#fef3c7">conn = db.connect()</text>
+
+  <line x1="195" y1="168" x2="195" y2="192" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowGray)"/>
+  <text x="225" y="184" font-size="10" fill="#94a3b8">direct call</text>
+
+  <rect x="70" y="196" width="250" height="60" rx="8" fill="url(#neuGrad)" filter="url(#shadow)"/>
+  <text x="195" y="224" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">NeuG Engine</text>
+  <text x="195" y="244" text-anchor="middle" font-size="10" fill="#c7d2fe">Query &#x2022; Storage &#x2022; Optimizer</text>
+
+  <line x1="195" y1="256" x2="195" y2="280" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowGray)"/>
+
+  <rect x="110" y="284" width="170" height="50" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="195" y="310" text-anchor="middle" font-size="11" fill="#475569" font-weight="600">my_graph.db</text>
+  <text x="195" y="325" text-anchor="middle" font-size="10" fill="#94a3b8">local storage</text>
+
+  <!-- CENTER: Switch indicator -->
+  <line x1="400" y1="72" x2="400" y2="362" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="6,4"/>
+  <rect x="370" y="195" width="60" height="30" rx="15" fill="#6366f1"/>
+  <text x="400" y="215" text-anchor="middle" font-size="18" fill="#fff">&#x21C4;</text>
+  <text x="400" y="248" text-anchor="middle" font-size="10" fill="#6366f1" font-weight="600">db.serve()</text>
+  <text x="400" y="261" text-anchor="middle" font-size="10" fill="#94a3b8">one line</text>
+
+  <!-- RIGHT: Service Mode -->
+  <text x="650" y="38" text-anchor="middle" font-size="16" font-weight="700" fill="#1e293b">Service Mode</text>
+  <text x="650" y="56" text-anchor="middle" font-size="11" fill="#64748b">multi-client, MVCC concurrency</text>
+
+  <rect x="490" y="72" width="100" height="44" rx="8" fill="url(#clientGrad)" filter="url(#shadow)"/>
+  <text x="540" y="95" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Client 1</text>
+  <text x="540" y="108" text-anchor="middle" font-size="9" fill="#d1fae5">Session</text>
+
+  <rect x="610" y="72" width="100" height="44" rx="8" fill="url(#clientGrad)" filter="url(#shadow)"/>
+  <text x="660" y="95" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Client 2</text>
+  <text x="660" y="108" text-anchor="middle" font-size="9" fill="#d1fae5">Session</text>
+
+  <rect x="730" y="72" width="100" height="44" rx="8" fill="url(#clientGrad)" filter="url(#shadow)"/>
+  <text x="780" y="95" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Client N</text>
+  <text x="780" y="108" text-anchor="middle" font-size="9" fill="#d1fae5">Session</text>
+
+  <line x1="540" y1="116" x2="620" y2="175" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="660" y1="116" x2="650" y2="175" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="780" y1="116" x2="710" y2="175" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="755" y="148" font-size="10" fill="#94a3b8">HTTP</text>
+
+  <rect x="500" y="175" width="300" height="187" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="515" y="196" font-size="11" fill="#94a3b8" font-weight="600">NEUG SERVER PROCESS</text>
+
+  <rect x="525" y="206" width="250" height="36" rx="6" fill="#e0e7ff" stroke="#a5b4fc" stroke-width="1"/>
+  <text x="650" y="229" text-anchor="middle" font-size="11" font-weight="600" fill="#4338ca">Request Router &#x2022; MVCC Txn Manager</text>
+
+  <rect x="525" y="252" width="250" height="50" rx="8" fill="url(#neuGrad)" filter="url(#shadow)"/>
+  <text x="650" y="278" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">NeuG Engine</text>
+  <text x="650" y="293" text-anchor="middle" font-size="10" fill="#c7d2fe">Query &#x2022; Storage &#x2022; Optimizer</text>
+
+  <line x1="650" y1="302" x2="650" y2="320" stroke="#94a3b8" stroke-width="2"/>
+
+  <rect x="565" y="322" width="170" height="34" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="650" y="344" text-anchor="middle" font-size="11" fill="#475569" font-weight="600">my_graph.db</text>
+
+  <rect x="88" y="382" width="720" height="28" rx="6" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="448" y="401" text-anchor="middle" font-size="12" fill="#1d4ed8" font-weight="600">Same data files &#x2022; Same query language &#x2022; Same library</text>
+</svg>
