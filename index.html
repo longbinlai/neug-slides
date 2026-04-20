@@ -138,70 +138,80 @@ section[data-bg="dark"] .metric .n{color:#fff}
 
 .gh-btn{display:inline-flex;align-items:center;gap:8px;background:var(--g5);color:white;padding:12px 24px;border-radius:10px;font-size:17px;font-weight:600;text-decoration:none;transition:opacity 0.2s}
 .gh-btn:hover{opacity:0.85}.gh-btn svg{width:20px;height:20px;fill:white}
+
+/* Language switcher */
+#lang-switcher{position:fixed;top:14px;right:72px;z-index:9999;display:flex;border-radius:9px;overflow:hidden;border:1px solid var(--line);background:rgba(240,240,245,0.92);backdrop-filter:blur(8px);box-shadow:0 2px 8px rgba(0,0,0,0.10);padding:2px;gap:2px}
+.ls-btn{padding:4px 13px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--g3);font-family:inherit;border-radius:7px;transition:all 0.18s;letter-spacing:0.01em}
+.ls-btn:hover{background:rgba(255,255,255,0.7);color:var(--g5)}
+.ls-btn.ls-active{background:white;color:var(--g5);box-shadow:0 1px 4px rgba(0,0,0,0.12)}
 </style>
 </head>
 <body>
+<div id="lang-switcher">
+  <button id="btn-en" class="ls-btn ls-active" onclick="setLang('en')">EN</button>
+  <button id="btn-zh" class="ls-btn" onclick="setLang('zh')">中文</button>
+</div>
 <div class="reveal">
 <div class="slides">
 
 <!-- 01 ──── TITLE ──── -->
 <section class="vc title-hero">
-  <small style="letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--g3);font-size:16px">Alibaba · Tongyi Lab</small>
+  <small data-i18n="s01_org" style="letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--g3);font-size:16px">Alibaba · Tongyi Lab</small>
   <h1 class="g-blue mt12" style="font-size:80px">NeuG</h1>
-  <p style="font-size:28px;color:var(--g4);margin:0;letter-spacing:-0.01em">Making Graph Databases as Simple as SQLite</p>
+  <p data-i18n="s01_subtitle" style="font-size:28px;color:var(--g4);margin:0;letter-spacing:-0.01em">Making Graph Databases as Simple as SQLite</p>
   <div class="mt20" style="display:flex;gap:12px;justify-content:center">
-    <span class="pill pill-b" style="font-size:15px;padding:6px 18px">Open Source</span>
-    <span class="pill pill-g" style="font-size:15px;padding:6px 18px">Embedded</span>
-    <span class="pill pill-p" style="font-size:15px;padding:6px 18px">High Performance</span>
+    <span data-i18n="s01_pill_os" class="pill pill-b" style="font-size:15px;padding:6px 18px">Open Source</span>
+    <span data-i18n="s01_pill_em" class="pill pill-g" style="font-size:15px;padding:6px 18px">Embedded</span>
+    <span data-i18n="s01_pill_hp" class="pill pill-p" style="font-size:15px;padding:6px 18px">High Performance</span>
   </div>
   <div class="mt24" style="display:flex;align-items:center;gap:28px">
     <a href="https://github.com/alibaba/neug" target="_blank"><img src="neug-github.png" alt="NeuG GitHub QR" class="noshadow" style="width:140px;height:140px;border-radius:10px"></a>
     <div style="text-align:left">
       <a href="https://github.com/alibaba/neug" target="_blank" class="gh-btn" style="font-size:18px;padding:12px 26px">
         <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-        Star on GitHub ⭐
+        <span data-i18n="s01_gh_btn">Star on GitHub ⭐</span>
       </a>
-      <p style="font-size:15px;color:var(--g3);margin-top:8px">Scan to visit github.com/alibaba/neug</p>
+      <p data-i18n="s01_scan" style="font-size:15px;color:var(--g3);margin-top:8px">Scan to visit github.com/alibaba/neug</p>
     </div>
   </div>
-  <p class="mt12" style="font-size:17px;color:var(--g3)">Dr. Longbin Lai · April 2026</p>
+  <p data-i18n="s01_author" class="mt12" style="font-size:17px;color:var(--g3)">Dr. Longbin Lai · April 2026</p>
 </section>
 
 <!-- 02 ──── THE PROBLEM ──── -->
 <section style="display:flex!important;flex-direction:column;justify-content:center;padding:60px 80px">
   <div class="sh" style="text-align:center;margin-bottom:32px">
-    <h2 style="font-size:42px">The Problem</h2>
-    <h3 style="font-size:20px;color:var(--g3)">Graph databases are powerful — but heavy for research &amp; prototyping</h3>
+    <h2 data-i18n="s02_h2" style="font-size:42px">The Problem</h2>
+    <h3 data-i18n="s02_h3" style="font-size:20px;color:var(--g3)">Graph databases are powerful — but heavy for research &amp; prototyping</h3>
   </div>
   <div class="panel" style="align-items:stretch">
     <div style="flex:1">
-      <p style="font-size:20px;font-weight:600;color:var(--g5);margin-bottom:14px">Traditional workflow</p>
+      <p data-i18n="s02_trad" style="font-size:20px;font-weight:600;color:var(--g5);margin-bottom:14px">Traditional workflow</p>
       <div style="display:flex;align-items:center;gap:10px;margin:16px 0;font-size:17px;flex-wrap:wrap">
-        <span class="card" style="padding:12px 20px;font-size:17px">Deploy Server</span>
+        <span data-i18n="s02_step1" class="card" style="padding:12px 20px;font-size:17px">Deploy Server</span>
         <span style="color:var(--g3);font-size:20px">→</span>
-        <span class="card" style="padding:12px 20px;font-size:17px">Config &amp; Auth</span>
+        <span data-i18n="s02_step2" class="card" style="padding:12px 20px;font-size:17px">Config &amp; Auth</span>
         <span style="color:var(--g3);font-size:20px">→</span>
-        <span class="card" style="padding:12px 20px;font-size:17px">Network RTT</span>
+        <span data-i18n="s02_step3" class="card" style="padding:12px 20px;font-size:17px">Network RTT</span>
         <span style="color:var(--g3);font-size:20px">→</span>
-        <span class="card" style="padding:12px 20px;font-size:17px">Query</span>
+        <span data-i18n="s02_step4" class="card" style="padding:12px 20px;font-size:17px">Query</span>
       </div>
       <ul class="sl mt16" style="font-size:17px">
-        <li style="padding:6px 0 6px 22px;font-size:17px">Separate server process with complex deployment</li>
-        <li style="padding:6px 0 6px 22px;font-size:17px">Network serialization on every query hop</li>
-        <li style="padding:6px 0 6px 22px;font-size:17px">Hard to embed in notebooks &amp; ML pipelines</li>
-        <li style="padding:6px 0 6px 22px;font-size:17px">Overkill for exploration and prototyping</li>
+        <li data-i18n="s02_li1" style="padding:6px 0 6px 22px;font-size:17px">Separate server process with complex deployment</li>
+        <li data-i18n="s02_li2" style="padding:6px 0 6px 22px;font-size:17px">Network serialization on every query hop</li>
+        <li data-i18n="s02_li3" style="padding:6px 0 6px 22px;font-size:17px">Hard to embed in notebooks &amp; ML pipelines</li>
+        <li data-i18n="s02_li4" style="padding:6px 0 6px 22px;font-size:17px">Overkill for exploration and prototyping</li>
       </ul>
     </div>
     <div class="divider"></div>
     <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
-      <p style="font-size:20px;font-weight:600;color:var(--g5);margin-bottom:14px">What we really want</p>
+      <p data-i18n="s02_want" style="font-size:20px;font-weight:600;color:var(--g5);margin-bottom:14px">What we really want</p>
       <div style="display:flex;align-items:center;gap:10px;margin:16px 0;font-size:18px">
         <span class="card" style="padding:12px 22px;background:rgba(0,113,227,0.06);font-size:18px"><code style="background:none;padding:0">pip install</code></span>
         <span style="color:var(--g3);font-size:22px">→</span>
         <span class="card" style="padding:12px 22px;background:rgba(52,199,89,0.06);font-size:18px"><code style="background:none;padding:0;color:var(--green)">import &amp; query</code></span>
       </div>
       <div class="callout" style="margin-top:24px;padding:18px 22px">
-        <p style="font-size:20px;line-height:1.65"><strong>SQLite</strong> made relational DBs trivial to embed.<br>
+        <p data-i18n="s02_callout" style="font-size:20px;line-height:1.65"><strong>SQLite</strong> made relational DBs trivial to embed.<br>
         <strong>DuckDB</strong> did the same for analytics.<br>
         <strong style="color:var(--blue)">NeuG</strong> brings that to <strong>graph data</strong>.</p>
       </div>
@@ -212,14 +222,14 @@ section[data-bg="dark"] .metric .n{color:#fff}
 <!-- 03 ──── INTRODUCING NEUG ──── -->
 <section>
   <div class="sh">
-    <h2>Introducing <span class="g-blue">NeuG</span></h2>
-    <h3>An embedded, high-performance graph database</h3>
+    <h2 data-i18n="s03_h2">Introducing <span class="g-blue">NeuG</span></h2>
+    <h3 data-i18n="s03_h3">An embedded, high-performance graph database</h3>
   </div>
   <div class="card-row mt8">
-    <div class="card tac feature" style="padding:16px 16px"><small>01</small><p class="mt2 mb0 f14" style="font-weight:600;color:var(--g5)">Zero Config</p><p class="mt2 f12 mb0">No server. Runs in-process.</p></div>
-    <div class="card tac feature" style="padding:16px 16px"><small>02</small><p class="mt2 mb0 f14" style="font-weight:600;color:var(--g5)">Sub-ms Latency</p><p class="mt2 f12 mb0">Direct memory access.</p></div>
-    <div class="card tac feature" style="padding:16px 16px"><small>03</small><p class="mt2 mb0 f14" style="font-weight:600;color:var(--g5)">Full Cypher</p><p class="mt2 f12 mb0">Paths, shortest path, subqueries.</p></div>
-    <div class="card tac feature" style="padding:16px 16px"><small>04</small><p class="mt2 mb0 f14" style="font-weight:600;color:var(--g5)">Dual Mode</p><p class="mt2 f12 mb0">Embedded ↔ Service, one line.</p></div>
+    <div class="card tac feature" style="padding:16px 16px"><small>01</small><p data-i18n="s03_f1t" class="mt2 mb0 f14" style="font-weight:600;color:var(--g5)">Zero Config</p><p data-i18n="s03_f1d" class="mt2 f12 mb0">No server. Runs in-process.</p></div>
+    <div class="card tac feature" style="padding:16px 16px"><small>02</small><p data-i18n="s03_f2t" class="mt2 mb0 f14" style="font-weight:600;color:var(--g5)">Sub-ms Latency</p><p data-i18n="s03_f2d" class="mt2 f12 mb0">Direct memory access.</p></div>
+    <div class="card tac feature" style="padding:16px 16px"><small>03</small><p data-i18n="s03_f3t" class="mt2 mb0 f14" style="font-weight:600;color:var(--g5)">Full Cypher</p><p data-i18n="s03_f3d" class="mt2 f12 mb0">Paths, shortest path, subqueries.</p></div>
+    <div class="card tac feature" style="padding:16px 16px"><small>04</small><p data-i18n="s03_f4t" class="mt2 mb0 f14" style="font-weight:600;color:var(--g5)">Dual Mode</p><p data-i18n="s03_f4d" class="mt2 f12 mb0">Embedded ↔ Service, one line.</p></div>
   </div>
   <pre class="mt10"><code class="language-python" data-trim>
 from neug.database import Database
@@ -241,23 +251,23 @@ result = conn.execute("""
 <!-- 04 ──── DUAL-MODE ARCHITECTURE ──── -->
 <section>
   <div class="sh">
-    <h2>Dual-Mode Architecture</h2>
-    <h3>One engine · two deployment models · switch with one line of code</h3>
+    <h2 data-i18n="s04_h2">Dual-Mode Architecture</h2>
+    <h3 data-i18n="s04_h3">One engine · two deployment models · switch with one line of code</h3>
   </div>
   <div class="tac mt4">
     <img src="assets/neug-bench/images/dual-mode-architecture.svg" class="noshadow img-ctr" style="max-height:310px;border-radius:0">
   </div>
   <div class="cols mt16">
     <div class="card" style="padding:12px 16px">
-      <p class="f14 mb0" style="font-weight:600;color:var(--g5)">Embedded Mode</p>
-      <p class="f13 mt2 mb0">In-process, zero overhead. For data science, ML pipelines, prototyping.</p>
+      <p data-i18n="s04_em_t" class="f14 mb0" style="font-weight:600;color:var(--g5)">Embedded Mode</p>
+      <p data-i18n="s04_em_d" class="f13 mt2 mb0">In-process, zero overhead. For data science, ML pipelines, prototyping.</p>
     </div>
     <div class="card" style="padding:12px 16px">
-      <p class="f14 mb0" style="font-weight:600;color:var(--g5)">Service Mode</p>
-      <p class="f13 mt2 mb0">HTTP/RPC with MVCC. For web apps, real-time APIs, multi-user.</p>
+      <p data-i18n="s04_sv_t" class="f14 mb0" style="font-weight:600;color:var(--g5)">Service Mode</p>
+      <p data-i18n="s04_sv_d" class="f13 mt2 mb0">HTTP/RPC with MVCC. For web apps, real-time APIs, multi-user.</p>
     </div>
     <div class="callout" style="padding:10px 16px;margin:0;flex:1.2">
-      <p class="f13"><strong>Same library, same data, same queries.</strong> Develop embedded → deploy as service. Zero migration.</p>
+      <p data-i18n="s04_callout" class="f13"><strong>Same library, same data, same queries.</strong> Develop embedded → deploy as service. Zero migration.</p>
     </div>
   </div>
 </section>
@@ -265,12 +275,12 @@ result = conn.execute("""
 <!-- 05 ──── GETTING STARTED ──── -->
 <section>
   <div class="sh">
-    <h2>Getting Started</h2>
-    <h3>Embedded and Service mode — side by side</h3>
+    <h2 data-i18n="s05_h2">Getting Started</h2>
+    <h3 data-i18n="s05_h3">Embedded and Service mode — side by side</h3>
   </div>
   <div class="cols">
     <div>
-      <p class="f15 mb0" style="font-weight:600;color:var(--g5)">Embedded Mode</p>
+      <p data-i18n="s05_em" class="f15 mb0" style="font-weight:600;color:var(--g5)">Embedded Mode</p>
       <pre><code class="language-python" data-trim>
 from neug.database import Database
 
@@ -291,7 +301,7 @@ result = conn.execute("""
       </code></pre>
     </div>
     <div>
-      <p class="f15 mb0" style="font-weight:600;color:var(--g5)">Switch to Service — one line</p>
+      <p data-i18n="s05_sv" class="f15 mb0" style="font-weight:600;color:var(--g5)">Switch to Service — one line</p>
       <pre><code class="language-python" data-trim>
 # Everything above stays the same, then:
 uri = db.serve(host="localhost", port=10000,
@@ -300,14 +310,14 @@ uri = db.serve(host="localhost", port=10000,
 # Now accessible over HTTP/RPC
 # Multi-client, MVCC transactions
       </code></pre>
-      <p class="f15 mt16 mb0" style="font-weight:600;color:var(--g5)">Extension System</p>
+      <p data-i18n="s05_ext" class="f15 mt16 mb0" style="font-weight:600;color:var(--g5)">Extension System</p>
       <pre><code class="language-sql" data-trim>
 INSTALL JSON;  LOAD JSON;
 INSTALL Parquet; LOAD Parquet;
 LOAD lif_sim;  -- custom C++ extensions
       </code></pre>
       <div class="callout mt8">
-        <p class="f13">Postgres/DuckDB-style extension model — keep the core lean, add capabilities on demand.</p>
+        <p data-i18n="s05_ext_d" class="f13">Postgres/DuckDB-style extension model — keep the core lean, add capabilities on demand.</p>
       </div>
     </div>
   </div>
@@ -316,8 +326,8 @@ LOAD lif_sim;  -- custom C++ extensions
 <!-- 06 ──── PERFORMANCE: EMBEDDED (NeuG vs LadybugDB) ──── -->
 <section>
   <div class="sh">
-    <h2>Performance · <span class="g-blue">NeuG vs LadybugDB</span></h2>
-    <h3>Embedded Mode · LSQB Benchmark · LDBC SNB SF1 (~3M nodes, ~17M edges) · Apple Silicon</h3>
+    <h2 data-i18n="s06_h2">Performance · <span class="g-blue">NeuG vs LadybugDB</span></h2>
+    <h3 data-i18n="s06_h3">Embedded Mode · LSQB Benchmark · LDBC SNB SF1 (~3M nodes, ~17M edges) · Apple Silicon</h3>
   </div>
   <div class="cols">
     <div class="c6">
@@ -325,12 +335,12 @@ LOAD lif_sim;  -- custom C++ extensions
     </div>
     <div>
       <div class="mrow mt8">
-        <div class="metric"><span class="n">8/9</span><span class="l">Queries Won</span></div>
-        <div class="metric"><span class="n">287×</span><span class="l">Max Speedup</span></div>
+        <div class="metric"><span class="n">8/9</span><span data-i18n="s06_won" class="l">Queries Won</span></div>
+        <div class="metric"><span class="n">287×</span><span data-i18n="s06_max" class="l">Max Speedup</span></div>
       </div>
       <img src="assets/neug-bench/images/lsqb_speedup_horizontal.png" class="mt16" style="max-height:200px">
       <div class="callout mt16">
-        <p class="f13"><strong>NeuG single-thread</strong> beats LadybugDB (Kùzu) multi-thread on 8 of 9 queries. Powered by <strong>GOpt</strong> graph-native optimizer with cost-based pattern decomposition.</p>
+        <p data-i18n="s06_callout" class="f13"><strong>NeuG single-thread</strong> beats LadybugDB (Kùzu) multi-thread on 8 of 9 queries. Powered by <strong>GOpt</strong> graph-native optimizer with cost-based pattern decomposition.</p>
       </div>
     </div>
   </div>
@@ -339,8 +349,8 @@ LOAD lif_sim;  -- custom C++ extensions
 <!-- 07 ──── PERFORMANCE: SERVICE (NeuG vs Neo4j) ──── -->
 <section>
   <div class="sh">
-    <h2>Performance · <span class="g-blue">NeuG vs Neo4j</span></h2>
-    <h3>Service Mode · LDBC SNB Interactive · 14 queries, 4 clients, 300 seconds</h3>
+    <h2 data-i18n="s07_h2">Performance · <span class="g-blue">NeuG vs Neo4j</span></h2>
+    <h3 data-i18n="s07_h3">Service Mode · LDBC SNB Interactive · 14 queries, 4 clients, 300 seconds</h3>
   </div>
   <div class="cols">
     <div class="c6">
@@ -348,33 +358,33 @@ LOAD lif_sim;  -- custom C++ extensions
     </div>
     <div>
       <div class="card tac mt8" style="background:linear-gradient(135deg,#0071E3,#5856D6);color:white;padding:20px">
-        <small style="color:rgba(255,255,255,0.6)">NeuG Service Mode</small>
+        <small data-i18n="s07_neug_lbl" style="color:rgba(255,255,255,0.6)">NeuG Service Mode</small>
         <span style="font-size:48px;font-weight:700;display:block;color:white;margin:6px 0">617 QPS</span>
         <small style="color:rgba(255,255,255,0.5)">P50 3.1ms · P95 20.6ms</small>
       </div>
       <div class="card tac mt12" style="padding:16px">
-        <small>Neo4j Server Mode</small>
+        <small data-i18n="s07_neo_lbl">Neo4j Server Mode</small>
         <span style="font-size:28px;font-weight:700;color:var(--g3);display:block;margin:4px 0">12.2 QPS</span>
         <small>P95 1,728ms</small>
       </div>
-      <p class="tac mt16" style="font-size:36px;font-weight:700"><span class="g-blue">50.6×</span> <span style="font-size:18px;color:var(--g3)">throughput</span></p>
-      <p class="tac f13 mt4" style="color:var(--g3)">Built on GraphScope Flex — LDBC SNB world record: 80K+ QPS</p>
+      <p class="tac mt16" style="font-size:36px;font-weight:700"><span class="g-blue">50.6×</span> <span data-i18n="s07_thru" style="font-size:18px;color:var(--g3)">throughput</span></p>
+      <p data-i18n="s07_note" class="tac f13 mt4" style="color:var(--g3)">Built on GraphScope Flex — LDBC SNB world record: 80K+ QPS</p>
     </div>
   </div>
 </section>
 
 <!-- 08 ──── CASE STUDIES DIVIDER ──── -->
 <section class="vc" data-bg="dark" data-background-color="#1D1D1F">
-  <small style="letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--blue)">Case Studies</small>
-  <h1 style="color:white;font-size:46px" class="mt6">From Kernels to Connectomes</h1>
-  <p style="color:rgba(255,255,255,0.45);font-size:17px;max-width:660px">
+  <small data-i18n="s08_label" style="letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--blue)">Case Studies</small>
+  <h1 data-i18n="s08_h1" style="color:white;font-size:46px" class="mt6">From Kernels to Connectomes</h1>
+  <p data-i18n="s08_desc" style="color:rgba(255,255,255,0.45);font-size:17px;max-width:660px">
     When graph analysis becomes as simple as loading a file,<br>the interesting part is no longer the tooling, but the questions you dare to ask.
   </p>
   <div class="case-grid">
-    <div class="case-chip tac"><div class="case-no">01</div><p style="color:white;font-size:18px;font-weight:600;margin-bottom:4px">Linux Kernel</p><p style="color:rgba(255,255,255,0.42);font-size:14px;margin:0">730K nodes · 1.08M edges</p></div>
-    <div class="case-chip tac"><div class="case-no">02</div><p style="color:white;font-size:18px;font-weight:600;margin-bottom:4px">Open Source Health</p><p style="color:rgba(255,255,255,0.42);font-size:14px;margin:0">74 projects · 60 months</p></div>
-    <div class="case-chip tac"><div class="case-no">03</div><p style="color:white;font-size:18px;font-weight:600;margin-bottom:4px">Fruit Fly Brain</p><p style="color:rgba(255,255,255,0.42);font-size:14px;margin:0">139K neurons · 54M synapses</p></div>
-    <div class="case-chip tac"><div class="case-no">04</div><p style="color:white;font-size:18px;font-weight:600;margin-bottom:4px">Exploratory BI</p><p style="color:rgba(255,255,255,0.42);font-size:14px;margin:0">22M entities · 94M edges</p></div>
+    <div class="case-chip tac"><div class="case-no">01</div><p data-i18n="s08_c1" style="color:white;font-size:18px;font-weight:600;margin-bottom:4px">Linux Kernel</p><p style="color:rgba(255,255,255,0.42);font-size:14px;margin:0">730K nodes · 1.08M edges</p></div>
+    <div class="case-chip tac"><div class="case-no">02</div><p data-i18n="s08_c2" style="color:white;font-size:18px;font-weight:600;margin-bottom:4px">Open Source Health</p><p style="color:rgba(255,255,255,0.42);font-size:14px;margin:0">74 projects · 60 months</p></div>
+    <div class="case-chip tac"><div class="case-no">03</div><p data-i18n="s08_c3" style="color:white;font-size:18px;font-weight:600;margin-bottom:4px">Fruit Fly Brain</p><p style="color:rgba(255,255,255,0.42);font-size:14px;margin:0">139K neurons · 54M synapses</p></div>
+    <div class="case-chip tac"><div class="case-no">04</div><p data-i18n="s08_c4" style="color:white;font-size:18px;font-weight:600;margin-bottom:4px">Exploratory BI</p><p style="color:rgba(255,255,255,0.42);font-size:14px;margin:0">22M entities · 94M edges</p></div>
   </div>
 </section>
 
@@ -382,36 +392,36 @@ LOAD lif_sim;  -- custom C++ extensions
 <section>
   <div class="sh">
     <span class="pill pill-b">Case 1 · Linux Kernel</span>
-    <h2 class="mt4">Turn the Linux Kernel into a Queryable Graph</h2>
-    <h3>30M lines of C · 4,585 directories · one driving question: "how far can one change propagate?"</h3>
+    <h2 data-i18n="s09_h2" class="mt4">Turn the Linux Kernel into a Queryable Graph</h2>
+    <h3 data-i18n="s09_h3">30M lines of C · 4,585 directories · one driving question: "how far can one change propagate?"</h3>
   </div>
   <div class="panel" style="padding:24px 28px;flex:1;align-items:stretch">
     <div style="flex:1.05">
-      <p style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:10px">Graph Schema · 5 node types, 9 edge types</p>
-      <div class="schema mt6"><span class="nd">Function</span><span class="ed">—CALLS→</span><span class="nd">Function</span><span class="ed" style="margin-left:6px">static call site</span></div>
-      <div class="schema"><span class="nd">Function</span><span class="ed">—BELONGS_TO→</span><span class="nd">Module</span><span class="ed" style="margin-left:6px">directory path</span></div>
-      <div class="schema"><span class="nd">Commit</span><span class="ed">—MODIFIES→</span><span class="nd">Function</span><span class="ed" style="margin-left:6px">git history</span></div>
+      <p data-i18n="s09_schema_t" style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:10px">Graph Schema · 5 node types, 9 edge types</p>
+      <div class="schema mt6"><span class="nd">Function</span><span class="ed">—CALLS→</span><span class="nd">Function</span><span data-i18n="s09_ed1" class="ed" style="margin-left:6px">static call site</span></div>
+      <div class="schema"><span class="nd">Function</span><span class="ed">—BELONGS_TO→</span><span class="nd">Module</span><span data-i18n="s09_ed2" class="ed" style="margin-left:6px">directory path</span></div>
+      <div class="schema"><span class="nd">Commit</span><span class="ed">—MODIFIES→</span><span class="nd">Function</span><span data-i18n="s09_ed3" class="ed" style="margin-left:6px">git history</span></div>
       <div class="schema"><span class="nd">Commit</span><span class="ed">—TOUCHES→</span><span class="nd">File</span></div>
       <div class="mrow mt16">
-        <div class="metric metric-s"><span class="n">733K</span><span class="l">Functions</span></div>
-        <div class="metric metric-s"><span class="n">1.08M</span><span class="l">Call Edges</span></div>
-        <div class="metric metric-s"><span class="n">31.7K</span><span class="l">Commits</span></div>
+        <div class="metric metric-s"><span class="n">733K</span><span data-i18n="s09_fn_l" class="l">Functions</span></div>
+        <div class="metric metric-s"><span class="n">1.08M</span><span data-i18n="s09_ce_l" class="l">Call Edges</span></div>
+        <div class="metric metric-s"><span class="n">31.7K</span><span data-i18n="s09_cm_l" class="l">Commits</span></div>
       </div>
-      <p class="mt12" style="font-size:15px;color:var(--g4)">Pre-built and shipped as a single NeuG database file (<code>linux_db.zip</code>) — download, unzip, query. No indexing, no rebuild.</p>
+      <p data-i18n="s09_note" class="mt12" style="font-size:15px;color:var(--g4)">Pre-built and shipped as a single NeuG database file (<code>linux_db.zip</code>) — download, unzip, query. No indexing, no rebuild.</p>
       <div class="callout mt10">
-        <p style="font-size:15px"><strong>The simplest question we can ask:</strong> "If I change one function's behavior, how many other functions might break — in the worst case?"</p>
+        <p data-i18n="s09_callout" style="font-size:15px"><strong>The simplest question we can ask:</strong> "If I change one function's behavior, how many other functions might break — in the worst case?"</p>
       </div>
     </div>
     <div class="divider"></div>
     <div style="flex:1">
-      <p style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:6px">From <code>grep</code> to Cypher</p>
-      <p style="font-size:14px;color:var(--g3);margin:6px 0 4px">① load the kernel — two lines:</p>
+      <p data-i18n="s09_grep" style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:6px">From <code>grep</code> to Cypher</p>
+      <p data-i18n="s09_step1" style="font-size:14px;color:var(--g3);margin:6px 0 4px">① load the kernel — two lines:</p>
       <pre style="font-size:13px" class="mt4"><code class="language-python" data-trim>
 import neug
 db = neug.Database("linux_db")   # unzipped from linux_db.zip
 conn = db.connect()
       </code></pre>
-      <p style="font-size:14px;color:var(--g3);margin:10px 0 4px">② "which modules does everyone depend on?"</p>
+      <p data-i18n="s09_step2" style="font-size:14px;color:var(--g3);margin:10px 0 4px">② "which modules does everyone depend on?"</p>
       <pre style="font-size:13px"><code class="language-sql" data-trim>
 MATCH (caller:Function)-[:CALLS]->(callee:Function)
 WHERE caller.module <> callee.module
@@ -419,14 +429,14 @@ RETURN callee.module AS mod,
        count(DISTINCT caller.module) AS inbound
 ORDER BY inbound DESC LIMIT 10;
       </code></pre>
-      <p style="font-size:14px;color:var(--g3);margin:10px 0 4px">③ "3-hop blast radius of <code>free_irq</code>?"</p>
+      <p data-i18n="s09_step3" style="font-size:14px;color:var(--g3);margin:10px 0 4px">③ "3-hop blast radius of <code>free_irq</code>?"</p>
       <pre style="font-size:13px"><code class="language-sql" data-trim>
 MATCH (f:Function {name:'free_irq'})
      <-[:CALLS*1..3]-(affected:Function)
 RETURN count(DISTINCT affected);
 -- → 1,390 functions in milliseconds
       </code></pre>
-      <p class="mt8" style="font-size:14px;color:var(--g3);font-style:italic">
+      <p data-i18n="s09_footer" class="mt8" style="font-size:14px;color:var(--g3);font-style:italic">
         Before: <code>grep</code> across 30M lines + manually trace wrappers. Days.<br>
         After: variable-length Cypher path. One query. One second.
       </p>
@@ -438,51 +448,51 @@ RETURN count(DISTINCT affected);
 <section style="display:flex!important;flex-direction:column;justify-content:center;padding:48px 64px">
   <div class="sh" style="margin-bottom:20px">
     <span class="pill pill-b" style="font-size:14px;padding:5px 16px">Case 1 · Linux Kernel</span>
-    <h2 class="mt4" style="font-size:38px">The Ripple Effect of One Function</h2>
-    <h3 style="font-size:19px">Follow <code>free_irq</code> — the kernel's interrupt-release routine — outward, one hop at a time</h3>
+    <h2 data-i18n="s10_h2" class="mt4" style="font-size:38px">The Ripple Effect of One Function</h2>
+    <h3 data-i18n="s10_h3" style="font-size:19px">Follow <code>free_irq</code> — the kernel's interrupt-release routine — outward, one hop at a time</h3>
   </div>
   <div class="panel" style="padding:24px 28px;align-items:stretch">
     <div style="flex:1.15">
-      <p style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:6px">The graph traces the shock wave</p>
-      <p style="font-size:15px;color:var(--g4);margin-bottom:12px">One <code>MATCH … CALLS*1..3</code> gives us what would otherwise take weeks of grep + code reading.</p>
+      <p data-i18n="s10_shock" style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:6px">The graph traces the shock wave</p>
+      <p data-i18n="s10_p1" style="font-size:15px;color:var(--g4);margin-bottom:12px">One <code>MATCH … CALLS*1..3</code> gives us what would otherwise take weeks of grep + code reading.</p>
       <div style="display:flex;flex-direction:column;gap:8px;margin-top:6px">
         <div class="card" style="padding:12px 16px;background:rgba(0,113,227,0.05);border-left:3px solid var(--blue)">
-          <p style="font-size:16px;margin:0"><strong>Hop 0 · the source</strong></p>
-          <p style="font-size:14px;margin:4px 0 0;color:var(--g4)"><code>free_irq</code> — releases an interrupt handler; every driver that claims IRQs must release them.</p>
+          <p data-i18n="s10_h0t" style="font-size:16px;margin:0"><strong>Hop 0 · the source</strong></p>
+          <p data-i18n="s10_h0d" style="font-size:14px;margin:4px 0 0;color:var(--g4)"><code>free_irq</code> — releases an interrupt handler; every driver that claims IRQs must release them.</p>
         </div>
         <div class="card" style="padding:12px 16px">
-          <p style="font-size:16px;margin:0"><strong>Hop 1 · direct callers → 1,862</strong></p>
-          <p style="font-size:14px;margin:4px 0 0;color:var(--g4)">SCSI, serial, sound, DMA, SPI, MMC drivers…</p>
+          <p data-i18n="s10_h1t" style="font-size:16px;margin:0"><strong>Hop 1 · direct callers → 1,862</strong></p>
+          <p data-i18n="s10_h1d" style="font-size:14px;margin:4px 0 0;color:var(--g4)">SCSI, serial, sound, DMA, SPI, MMC drivers…</p>
         </div>
         <div class="card" style="padding:12px 16px">
-          <p style="font-size:16px;margin:0"><strong>Hop 2 · through wrappers</strong></p>
-          <p style="font-size:14px;margin:4px 0 0;color:var(--g4)"><code>devm_free_irq</code>, <code>pci_free_irq</code> → dozens more NIC / GPU / audio drivers</p>
+          <p data-i18n="s10_h2t" style="font-size:16px;margin:0"><strong>Hop 2 · through wrappers</strong></p>
+          <p data-i18n="s10_h2d" style="font-size:14px;margin:4px 0 0;color:var(--g4)"><code>devm_free_irq</code>, <code>pci_free_irq</code> → dozens more NIC / GPU / audio drivers</p>
         </div>
         <div class="card" style="padding:12px 16px;background:rgba(255,59,48,0.05);border-left:3px solid var(--red)">
-          <p style="font-size:16px;margin:0"><strong>Hop 3 · <span style="color:var(--red)">1,390 functions</span></strong></p>
-          <p style="font-size:14px;margin:4px 0 0;color:var(--g4)">Across <strong>562 modules</strong> — 12.3% of the entire kernel can feel the change.</p>
+          <p data-i18n="s10_h3t" style="font-size:16px;margin:0"><strong>Hop 3 · <span style="color:var(--red)">1,390 functions</span></strong></p>
+          <p data-i18n="s10_h3d" style="font-size:14px;margin:4px 0 0;color:var(--g4)">Across <strong>562 modules</strong> — 12.3% of the entire kernel can feel the change.</p>
         </div>
       </div>
       <div class="callout-w callout mt12">
-        <p style="font-size:15px"><strong>This is why Linus and Greg KH guard core APIs so fiercely.</strong> "Break one thing, break the world" is not a metaphor — the graph measures it exactly.</p>
+        <p data-i18n="s10_callout" style="font-size:15px"><strong>This is why Linus and Greg KH guard core APIs so fiercely.</strong> "Break one thing, break the world" is not a metaphor — the graph measures it exactly.</p>
       </div>
     </div>
     <div class="divider"></div>
     <div style="flex:1">
-      <p style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:10px">Load-bearing walls of the kernel</p>
-      <p style="font-size:14px;color:var(--g4);margin-bottom:8px"><em>Pure service providers</em> — 12 modules where <code>inbound / (inbound + outbound) = 1.00</code>. They are called by everyone and call no one outside.</p>
+      <p data-i18n="s10_walls" style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:10px">Load-bearing walls of the kernel</p>
+      <p data-i18n="s10_walls_d" style="font-size:14px;color:var(--g4);margin-bottom:8px"><em>Pure service providers</em> — 12 modules where <code>inbound / (inbound + outbound) = 1.00</code>. They are called by everyone and call no one outside.</p>
       <table style="font-size:14px" class="mt4">
         <thead><tr><th>Module</th><th style="text-align:right">Inbound</th><th>Role</th></tr></thead>
         <tbody>
-          <tr class="hl"><td><code>drivers/base</code></td><td style="text-align:right">21,501</td><td>Device model</td></tr>
-          <tr><td><code>net/core</code></td><td style="text-align:right">14,210</td><td>Network core</td></tr>
-          <tr><td><code>kernel/sched</code></td><td style="text-align:right">10,049</td><td>Scheduler</td></tr>
-          <tr><td><code>kernel/irq</code></td><td style="text-align:right">8,233</td><td>Interrupts</td></tr>
-          <tr><td><code>drivers/pci</code></td><td style="text-align:right">7,838</td><td>PCI bus</td></tr>
-          <tr><td><code>kernel/time</code></td><td style="text-align:right">7,359</td><td>Time subsystem</td></tr>
+          <tr class="hl"><td><code>drivers/base</code></td><td style="text-align:right">21,501</td><td data-i18n="s10_r1">Device model</td></tr>
+          <tr><td><code>net/core</code></td><td style="text-align:right">14,210</td><td data-i18n="s10_r2">Network core</td></tr>
+          <tr><td><code>kernel/sched</code></td><td style="text-align:right">10,049</td><td data-i18n="s10_r3">Scheduler</td></tr>
+          <tr><td><code>kernel/irq</code></td><td style="text-align:right">8,233</td><td data-i18n="s10_r4">Interrupts</td></tr>
+          <tr><td><code>drivers/pci</code></td><td style="text-align:right">7,838</td><td data-i18n="s10_r5">PCI bus</td></tr>
+          <tr><td><code>kernel/time</code></td><td style="text-align:right">7,359</td><td data-i18n="s10_r6">Time subsystem</td></tr>
         </tbody>
       </table>
-      <p style="font-size:14px;color:var(--g4);margin-top:12px">The kernel's "hottest single function" is not <code>printk</code> — it's <code>dev_err_probe</code>, called at <strong>3,077</strong> sites. An error-handling function tops the chart: "device not found" happens more often than "device found". The graph tells us that, fast.</p>
+      <p data-i18n="s10_hot" style="font-size:14px;color:var(--g4);margin-top:12px">The kernel's "hottest single function" is not <code>printk</code> — it's <code>dev_err_probe</code>, called at <strong>3,077</strong> sites. An error-handling function tops the chart: "device not found" happens more often than "device found". The graph tells us that, fast.</p>
     </div>
   </div>
 </section>
@@ -491,36 +501,36 @@ RETURN count(DISTINCT affected);
 <section style="display:flex!important;flex-direction:column;justify-content:center;padding:48px 64px">
   <div class="sh" style="margin-bottom:18px">
     <span class="pill pill-b" style="font-size:14px;padding:5px 16px">Case 1 · Linux Kernel</span>
-    <h2 class="mt4" style="font-size:38px">Two Surprises the Graph Reveals</h2>
-    <h3 style="font-size:19px">Things you would never see by reading the source tree top-down</h3>
+    <h2 data-i18n="s11_h2" class="mt4" style="font-size:38px">Two Surprises the Graph Reveals</h2>
+    <h3 data-i18n="s11_h3" style="font-size:19px">Things you would never see by reading the source tree top-down</h3>
   </div>
   <div class="cols" style="gap:24px">
     <div class="card" style="padding:22px 24px;flex:1">
-      <p style="font-size:15px;font-weight:700;letter-spacing:0.06em;color:var(--orange);text-transform:uppercase">Surprise #1</p>
-      <p style="font-size:22px;font-weight:700;margin:6px 0 10px;color:var(--g5)">The foundation is also the busiest construction site</p>
-      <p style="font-size:15px;color:var(--g4);margin-bottom:8px">
+      <p data-i18n="s11_s1_lbl" style="font-size:15px;font-weight:700;letter-spacing:0.06em;color:var(--orange);text-transform:uppercase">Surprise #1</p>
+      <p data-i18n="s11_s1_ttl" style="font-size:22px;font-weight:700;margin:6px 0 10px;color:var(--g5)">The foundation is also the busiest construction site</p>
+      <p data-i18n="s11_s1_desc" style="font-size:15px;color:var(--g4);margin-bottom:8px">
         <code>mm/</code> — memory management — is the kernel's bedrock. Every page allocation, every VMA, every slab cache goes through it. Before <code>mm_core_init()</code> runs, even <code>kmalloc</code> doesn't exist.
       </p>
       <div class="mrow mt10" style="gap:20px">
-        <div class="metric metric-s"><span class="n" style="color:var(--orange)">0.8%</span><span class="l">of all kernel functions</span></div>
-        <div class="metric metric-s"><span class="n" style="color:var(--orange)">35%</span><span class="l">of hottest modified files</span></div>
+        <div class="metric metric-s"><span class="n" style="color:var(--orange)">0.8%</span><span data-i18n="s11_m1" class="l">of all kernel functions</span></div>
+        <div class="metric metric-s"><span class="n" style="color:var(--orange)">35%</span><span data-i18n="s11_m2" class="l">of hottest modified files</span></div>
       </div>
       <p style="font-size:14px;color:var(--g4);margin-top:12px">
         <code>include/linux/fs.h</code> — <strong>558 commits</strong>. <code>kernel/sched/core.c</code> — <strong>413</strong>. <code>mm/page_alloc.c</code> — <strong>348</strong>.
       </p>
       <div class="callout-w callout mt10">
-        <p style="font-size:15px">
+        <p data-i18n="s11_s1_clt" style="font-size:15px">
           <strong>The paradox:</strong> the code everyone depends on is also the code that changes the most.
           <br>Imagine renovating a skyscraper's foundation while people on floors 1–100 keep working — no downtime allowed.
         </p>
       </div>
     </div>
     <div class="card" style="padding:22px 24px;flex:1">
-      <p style="font-size:15px;font-weight:700;letter-spacing:0.06em;color:var(--indigo);text-transform:uppercase">Surprise #2</p>
-      <p style="font-size:22px;font-weight:700;margin:6px 0 10px;color:var(--g5)">A GPU driver is an operating system</p>
-      <p style="font-size:15px;color:var(--g4);margin-bottom:8px">Think a GPU driver is "just another driver"? The graph says otherwise.</p>
+      <p data-i18n="s11_s2_lbl" style="font-size:15px;font-weight:700;letter-spacing:0.06em;color:var(--indigo);text-transform:uppercase">Surprise #2</p>
+      <p data-i18n="s11_s2_ttl" style="font-size:22px;font-weight:700;margin:6px 0 10px;color:var(--g5)">A GPU driver is an operating system</p>
+      <p data-i18n="s11_s2_desc" style="font-size:15px;color:var(--g4);margin-bottom:8px">Think a GPU driver is "just another driver"? The graph says otherwise.</p>
       <table style="font-size:14px" class="mt4">
-        <thead><tr><th>Subsystem</th><th style="text-align:right">Functions</th></tr></thead>
+        <thead><tr><th>Subsystem</th><th data-i18n="s11_fn_h" style="text-align:right">Functions</th></tr></thead>
         <tbody>
           <tr class="hl"><td><code>drivers/gpu/drm/amd/amdgpu</code></td><td style="text-align:right"><strong>9,012</strong></td></tr>
           <tr><td><code>drivers/gpu/drm/i915/display</code> (Intel)</td><td style="text-align:right">6,130</td></tr>
@@ -528,11 +538,11 @@ RETURN count(DISTINCT affected);
           <tr><td><code>kernel/sched/</code> (scheduler)</td><td style="text-align:right">2,244</td></tr>
         </tbody>
       </table>
-      <p style="font-size:15px;color:var(--g4);margin-top:12px">
+      <p data-i18n="s11_s2_desc2" style="font-size:15px;color:var(--g4);margin-top:12px">
         <code>amdgpu_device_init()</code> makes <strong>44 direct calls</strong> — just 7 short of <code>start_kernel()</code>'s 51. Booting a single GPU is nearly as complex as booting Linux itself.
       </p>
       <div class="callout mt10">
-        <p style="font-size:15px">
+        <p data-i18n="s11_s2_clt" style="font-size:15px">
           <strong>Modern GPUs carry their own OS inside Linux</strong> — their own scheduler, memory manager, command processor, IPC. The kernel we call "Linux" is increasingly a federation of mini-OSes.
         </p>
       </div>
@@ -544,42 +554,42 @@ RETURN count(DISTINCT affected);
 <section>
   <div class="sh">
     <span class="pill pill-g">Case 2 · Open Source Health</span>
-    <h2 class="mt4">Can Stars Tell You if a Community Is Alive?</h2>
-    <h3>Stars count "who walked by". Graphs reveal "who actually stayed and built together". 74 projects · 60 months · 6.74M comments.</h3>
+    <h2 data-i18n="s12_h2" class="mt4">Can Stars Tell You if a Community Is Alive?</h2>
+    <h3 data-i18n="s12_h3">Stars count "who walked by". Graphs reveal "who actually stayed and built together". 74 projects · 60 months · 6.74M comments.</h3>
   </div>
   <div class="panel" style="padding:22px 28px;flex:1;align-items:stretch">
     <div style="flex:1.05">
-      <p style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:6px">Every month is a new graph</p>
-      <p style="font-size:14px;color:var(--g4);margin-bottom:10px">GitHub Archive events are replayed into three monthly graph snapshots per project:</p>
+      <p data-i18n="s12_ng" style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:6px">Every month is a new graph</p>
+      <p data-i18n="s12_ga" style="font-size:14px;color:var(--g4);margin-bottom:10px">GitHub Archive events are replayed into three monthly graph snapshots per project:</p>
       <div class="schema mt2"><span class="nd">Developer</span><span class="ed">—PR merge / review→</span><span class="nd">Developer</span></div>
-      <p style="font-size:13px;color:var(--g3);margin:2px 0 6px 4px"><em>collaboration graph G<sub>AA</sub> — who works with whom</em></p>
+      <p data-i18n="s12_gaa" style="font-size:13px;color:var(--g3);margin:2px 0 6px 4px"><em>collaboration graph G<sub>AA</sub> — who works with whom</em></p>
       <div class="schema"><span class="nd">Developer</span><span class="ed">—CONTRIBUTED_TO→</span><span class="nd">Repo</span></div>
-      <p style="font-size:13px;color:var(--g3);margin:2px 0 6px 4px"><em>contribution graph G<sub>AR</sub> — who flows across projects</em></p>
+      <p data-i18n="s12_gar" style="font-size:13px;color:var(--g3);margin:2px 0 6px 4px"><em>contribution graph G<sub>AR</sub> — who flows across projects</em></p>
       <div class="schema"><span class="nd">Developer</span><span class="ed">—CREATED / REVIEWED→</span><span class="nd">Issue/PR</span></div>
-      <p style="font-size:13px;color:var(--g3);margin:2px 0 6px 4px"><em>discussion graph G<sub>AD</sub> — how people talk</em></p>
-      <p style="font-size:15px;color:var(--g4);margin-top:14px"><strong>~4,000 monthly snapshots</strong> analyzed one-by-one in NeuG embedded — no server, no cluster, just a file per project.</p>
+      <p data-i18n="s12_gad" style="font-size:13px;color:var(--g3);margin:2px 0 6px 4px"><em>discussion graph G<sub>AD</sub> — how people talk</em></p>
+      <p data-i18n="s12_snap" style="font-size:15px;color:var(--g4);margin-top:14px"><strong>~4,000 monthly snapshots</strong> analyzed one-by-one in NeuG embedded — no server, no cluster, just a file per project.</p>
       <div class="callout mt10">
-        <p style="font-size:15px"><strong>Insight:</strong> Stars are a scalar. A community is a topology. You need graphs to tell them apart.</p>
+        <p data-i18n="s12_ins" style="font-size:15px"><strong>Insight:</strong> Stars are a scalar. A community is a topology. You need graphs to tell them apart.</p>
       </div>
     </div>
     <div class="divider"></div>
     <div style="flex:1">
-      <p style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:6px">4 dimensions · 4 graph algorithms</p>
+      <p data-i18n="s12_4d" style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:6px">4 dimensions · 4 graph algorithms</p>
       <div class="card mt4" style="padding:12px 16px">
-        <p style="font-size:16px;margin:0;font-weight:600"><span style="color:var(--blue)">🧠 Burnout Risk</span> — <em>is the core shrinking?</em></p>
-        <p style="font-size:13px;margin:4px 0 0;color:var(--g4)"><strong>k-core decomposition</strong>: peel the collaboration graph layer-by-layer until only the tightest clique remains — that's the real core. Is it growing or losing members?</p>
+        <p data-i18n="s12_d1t" style="font-size:16px;margin:0;font-weight:600"><span style="color:var(--blue)">🧠 Burnout Risk</span> — <em>is the core shrinking?</em></p>
+        <p data-i18n="s12_d1d" style="font-size:13px;margin:4px 0 0;color:var(--g4)"><strong>k-core decomposition</strong>: peel the collaboration graph layer-by-layer until only the tightest clique remains — that's the real core. Is it growing or losing members?</p>
       </div>
       <div class="card mt6" style="padding:12px 16px">
-        <p style="font-size:16px;margin:0;font-weight:600"><span style="color:var(--green)">🌱 Newcomer Friendliness</span> — <em>can a stranger reach the core?</em></p>
-        <p style="font-size:13px;margin:4px 0 0;color:var(--g4)"><strong>BFS shortest path</strong> from new contributors to core maintainers. If the distance is ∞, the door is closed.</p>
+        <p data-i18n="s12_d2t" style="font-size:16px;margin:0;font-weight:600"><span style="color:var(--green)">🌱 Newcomer Friendliness</span> — <em>can a stranger reach the core?</em></p>
+        <p data-i18n="s12_d2d" style="font-size:13px;margin:4px 0 0;color:var(--g4)"><strong>BFS shortest path</strong> from new contributors to core maintainers. If the distance is ∞, the door is closed.</p>
       </div>
       <div class="card mt6" style="padding:12px 16px">
-        <p style="font-size:16px;margin:0;font-weight:600"><span style="color:var(--indigo)">💬 Atmosphere</span> — <em>is the tone healthy?</em></p>
-        <p style="font-size:13px;margin:4px 0 0;color:var(--g4)"><strong>Clustering coefficient</strong> + ToxiCR sentiment on 6.74M comments. Are friends-of-friends also collaborating?</p>
+        <p data-i18n="s12_d3t" style="font-size:16px;margin:0;font-weight:600"><span style="color:var(--indigo)">💬 Atmosphere</span> — <em>is the tone healthy?</em></p>
+        <p data-i18n="s12_d3d" style="font-size:13px;margin:4px 0 0;color:var(--g4)"><strong>Clustering coefficient</strong> + ToxiCR sentiment on 6.74M comments. Are friends-of-friends also collaborating?</p>
       </div>
       <div class="card mt6" style="padding:12px 16px">
-        <p style="font-size:16px;margin:0;font-weight:600"><span style="color:var(--orange)">🌊 Talent Flow</span> — <em>is the pool growing?</em></p>
-        <p style="font-size:13px;margin:4px 0 0;color:var(--g4)">YoY net flow of core contributors across the <strong>cross-project</strong> graph.</p>
+        <p data-i18n="s12_d4t" style="font-size:16px;margin:0;font-weight:600"><span style="color:var(--orange)">🌊 Talent Flow</span> — <em>is the pool growing?</em></p>
+        <p data-i18n="s12_d4d" style="font-size:13px;margin:4px 0 0;color:var(--g4)">YoY net flow of core contributors across the <strong>cross-project</strong> graph.</p>
       </div>
     </div>
   </div>
@@ -589,8 +599,8 @@ RETURN count(DISTINCT affected);
 <section style="display:flex!important;flex-direction:column;justify-content:center;padding:48px 64px">
   <div class="sh" style="margin-bottom:18px">
     <span class="pill pill-g" style="font-size:14px;padding:5px 16px">Case 2 · Open Source Health</span>
-    <h2 class="mt4" style="font-size:38px">165K Stars vs 73K Stars — and the Smaller One Is Healthier</h2>
-    <h3 style="font-size:19px">Two LLM inference tools, same year, same audience — opposite community trajectories</h3>
+    <h2 data-i18n="s13_h2" class="mt4" style="font-size:38px">165K Stars vs 73K Stars — and the Smaller One Is Healthier</h2>
+    <h3 data-i18n="s13_h3" style="font-size:19px">Two LLM inference tools, same year, same audience — opposite community trajectories</h3>
   </div>
   <div class="panel" style="padding:22px 28px;align-items:stretch">
     <div style="flex:1">
@@ -598,42 +608,42 @@ RETURN count(DISTINCT affected);
         <div class="card tac" style="flex:1;padding:16px;border:1px solid rgba(255,59,48,0.25)">
           <small style="letter-spacing:0.08em;color:var(--red)">OLLAMA · #68 🔴</small>
           <span style="font-size:30px;font-weight:700;display:block;color:var(--g5);margin:4px 0">36.8</span>
-          <small style="color:var(--g3)">165K ⭐ · local LLM runner</small>
+          <small data-i18n="s13_ol_desc" style="color:var(--g3)">165K ⭐ · local LLM runner</small>
         </div>
         <div class="card tac" style="flex:1;padding:16px;border:1px solid rgba(52,199,89,0.3);background:rgba(52,199,89,0.04)">
           <small style="letter-spacing:0.08em;color:var(--green)">vLLM · #7 🟢</small>
           <span style="font-size:30px;font-weight:700;display:block;color:var(--g5);margin:4px 0">76.5</span>
-          <small style="color:var(--g3)">73K ⭐ · enterprise inference</small>
+          <small data-i18n="s13_vl_desc" style="color:var(--g3)">73K ⭐ · enterprise inference</small>
         </div>
       </div>
       <table class="mt12" style="font-size:14px">
-        <thead><tr><th>Dimension</th><th style="text-align:right">Ollama</th><th style="text-align:right">vLLM</th></tr></thead>
+        <thead><tr><th data-i18n="s13_dim">Dimension</th><th style="text-align:right">Ollama</th><th style="text-align:right">vLLM</th></tr></thead>
         <tbody>
-          <tr><td>🧠 Maintainer health</td><td style="text-align:right;color:var(--red);font-weight:600">34.0</td><td style="text-align:right;color:var(--green);font-weight:600">90.6</td></tr>
-          <tr><td>🌊 Talent flow</td><td style="text-align:right;color:var(--red);font-weight:600">8.8</td><td style="text-align:right;color:var(--green);font-weight:600">84.5</td></tr>
-          <tr class="hl"><td>Monthly active users</td><td style="text-align:right">1,128 → 150 (↓87%)</td><td style="text-align:right">rising to 12,614</td></tr>
-          <tr><td>Core developers</td><td style="text-align:right">102 → 13 at nadir</td><td style="text-align:right">15–30, 4 yrs stable</td></tr>
-          <tr><td>2026 net talent flow</td><td style="text-align:right;color:var(--red);font-weight:700">−83.3%</td><td style="text-align:right;color:var(--green);font-weight:700">still positive</td></tr>
+          <tr><td data-i18n="s13_d_mh">🧠 Maintainer health</td><td style="text-align:right;color:var(--red);font-weight:600">34.0</td><td style="text-align:right;color:var(--green);font-weight:600">90.6</td></tr>
+          <tr><td data-i18n="s13_d_tf">🌊 Talent flow</td><td style="text-align:right;color:var(--red);font-weight:600">8.8</td><td style="text-align:right;color:var(--green);font-weight:600">84.5</td></tr>
+          <tr class="hl"><td data-i18n="s13_d_mau">Monthly active users</td><td data-i18n="s13_d_mau_ol" style="text-align:right">1,128 → 150 (↓87%)</td><td data-i18n="s13_d_mau_vl" style="text-align:right">rising to 12,614</td></tr>
+          <tr><td data-i18n="s13_d_cd">Core developers</td><td data-i18n="s13_d_cd_ol" style="text-align:right">102 → 13 at nadir</td><td data-i18n="s13_d_cd_vl" style="text-align:right">15–30, 4 yrs stable</td></tr>
+          <tr><td data-i18n="s13_d_ntf">2026 net talent flow</td><td style="text-align:right;color:var(--red);font-weight:700">−83.3%</td><td data-i18n="s13_d_ntf_vl" style="text-align:right;color:var(--green);font-weight:700">still positive</td></tr>
         </tbody>
       </table>
       <div class="callout-w callout mt10">
-        <p style="font-size:15px"><strong>Stars measure popularity. The graph measures who stays.</strong> Ollama's onboarding funnel is wide but the bottom is leaking — 102 core contributors have fallen to 24, and the k-core is shrinking every quarter.</p>
+        <p data-i18n="s13_callout" style="font-size:15px"><strong>Stars measure popularity. The graph measures who stays.</strong> Ollama's onboarding funnel is wide but the bottom is leaking — 102 core contributors have fallen to 24, and the k-core is shrinking every quarter.</p>
       </div>
     </div>
     <div class="divider"></div>
     <div style="flex:1">
-      <p style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:8px">Three-layer AI stratification</p>
-      <p style="font-size:14px;color:var(--g4);margin-bottom:10px">The closer a project sits to infrastructure, the more resilient its collaboration graph. The closer it sits to "model release", the faster the topology hollows out.</p>
+      <p data-i18n="s13_3l_t" style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:8px">Three-layer AI stratification</p>
+      <p data-i18n="s13_3l_d" style="font-size:14px;color:var(--g4);margin-bottom:10px">The closer a project sits to infrastructure, the more resilient its collaboration graph. The closer it sits to "model release", the faster the topology hollows out.</p>
       <div class="mt6">
-        <div class="bar" style="margin:10px 0;font-size:15px"><span class="bar-lb" style="width:150px">Infrastructure</span><div class="bar-tk" style="height:22px"><div class="bar-fl bf-g" style="width:60%"></div></div><span class="bar-v" style="font-size:15px">59.7</span></div>
+        <div class="bar" style="margin:10px 0;font-size:15px"><span data-i18n="s13_inf" class="bar-lb" style="width:150px">Infrastructure</span><div class="bar-tk" style="height:22px"><div class="bar-fl bf-g" style="width:60%"></div></div><span class="bar-v" style="font-size:15px">59.7</span></div>
         <p style="font-size:12px;color:var(--g3);margin:0 0 4px 160px">PyTorch 81 · Transformers · Elasticsearch 79</p>
-        <div class="bar" style="margin:10px 0;font-size:15px"><span class="bar-lb" style="width:150px">Application layer</span><div class="bar-tk" style="height:22px"><div class="bar-fl bf-o" style="width:53%"></div></div><span class="bar-v" style="font-size:15px">53.2</span></div>
+        <div class="bar" style="margin:10px 0;font-size:15px"><span data-i18n="s13_app" class="bar-lb" style="width:150px">Application layer</span><div class="bar-tk" style="height:22px"><div class="bar-fl bf-o" style="width:53%"></div></div><span class="bar-v" style="font-size:15px">53.2</span></div>
         <p style="font-size:12px;color:var(--g3);margin:0 0 4px 160px">LangChain · AutoGen · Anthropic SDK</p>
-        <div class="bar" style="margin:10px 0;font-size:15px"><span class="bar-lb" style="width:150px">Model release</span><div class="bar-tk" style="height:22px"><div class="bar-fl bf-r" style="width:40%"></div></div><span class="bar-v" style="font-size:15px">39.9</span></div>
+        <div class="bar" style="margin:10px 0;font-size:15px"><span data-i18n="s13_rel" class="bar-lb" style="width:150px">Model release</span><div class="bar-tk" style="height:22px"><div class="bar-fl bf-r" style="width:40%"></div></div><span class="bar-v" style="font-size:15px">39.9</span></div>
         <p style="font-size:12px;color:var(--g3);margin:0 0 4px 160px">DeepSeek 34 · Yi 29 · Baichuan2 20</p>
       </div>
       <div class="callout mt10">
-        <p style="font-size:15px"><strong>Top 5 healthiest:</strong> OpenClaw (92) · PyTorch (81) · Go (80) · Elasticsearch (79) · Node.js (78). <strong>Bottom 5:</strong> all LLM release repos. A model release page is not a community.</p>
+        <p data-i18n="s13_top" style="font-size:15px"><strong>Top 5 healthiest:</strong> OpenClaw (92) · PyTorch (81) · Go (80) · Elasticsearch (79) · Node.js (78). <strong>Bottom 5:</strong> all LLM release repos. A model release page is not a community.</p>
       </div>
     </div>
   </div>
@@ -643,51 +653,51 @@ RETURN count(DISTINCT affected);
 <section style="display:flex!important;flex-direction:column;justify-content:center;padding:48px 64px">
   <div class="sh" style="text-align:center;margin-bottom:18px">
     <span class="pill pill-g" style="font-size:14px;padding:5px 16px">Case 2 · Open Source Health</span>
-    <h2 class="mt4" style="font-size:38px">Watching a Community Die, in Three Snapshots</h2>
-    <h3 style="font-size:19px">Stable Diffusion WebUI — the topology collapsed long before anyone stopped talking</h3>
+    <h2 data-i18n="s14_h2" class="mt4" style="font-size:38px">When a Community Hollows Out: Three Snapshots</h2>
+    <h3 data-i18n="s14_h3" style="font-size:19px">Stable Diffusion WebUI — the topology collapsed long before anyone stopped talking</h3>
   </div>
   <div class="panel" style="padding:24px 28px;align-items:stretch">
     <div style="flex:1.05">
-      <p style="font-size:18px;font-weight:600;color:var(--red);margin-bottom:8px">SD WebUI — three graphs, three diagnoses</p>
+      <p data-i18n="s14_sd_t" style="font-size:18px;font-weight:600;color:var(--red);margin-bottom:8px">SD WebUI — three graphs, three diagnoses</p>
       <table class="mt4" style="font-size:14px">
-        <thead><tr><th>Snapshot</th><th>MAU</th><th>Clustering coef.</th><th>Toxicity</th><th>Bus factor</th></tr></thead>
+        <thead><tr><th data-i18n="s14_snap_h">Snapshot</th><th>MAU</th><th data-i18n="s14_snap_cc">Clustering coef.</th><th>Toxicity</th><th data-i18n="s14_snap_bf">Bus factor</th></tr></thead>
         <tbody>
-          <tr><td>2022-10 · peak</td><td>1,834</td><td>0.655</td><td>1.2%</td><td>—</td></tr>
-          <tr><td>2024-06 · fading</td><td>172</td><td>0.200</td><td>3.5%</td><td>—</td></tr>
-          <tr class="hl"><td>2025-10 · near-dead</td><td style="color:var(--red);font-weight:700">18</td><td style="color:var(--red);font-weight:700">0.078</td><td style="color:var(--red);font-weight:700">9.09%</td><td style="color:var(--red);font-weight:700">1</td></tr>
+          <tr><td data-i18n="s14_s1">2022-10 · peak</td><td>1,834</td><td>0.655</td><td>1.2%</td><td>—</td></tr>
+          <tr><td data-i18n="s14_s2">2024-06 · fading</td><td>172</td><td>0.200</td><td>3.5%</td><td>—</td></tr>
+          <tr class="hl"><td data-i18n="s14_s3">2025-10 · near-dead</td><td style="color:var(--red);font-weight:700">18</td><td style="color:var(--red);font-weight:700">0.078</td><td style="color:var(--red);font-weight:700">9.09%</td><td style="color:var(--red);font-weight:700">1</td></tr>
         </tbody>
       </table>
-      <p style="font-size:15px;color:var(--g4);margin-top:10px"><strong>What each number means:</strong></p>
+      <p data-i18n="s14_what" style="font-size:15px;color:var(--g4);margin-top:10px"><strong>What each number means:</strong></p>
       <ul class="sl mt4" style="font-size:14px">
-        <li style="padding:3px 0 3px 16px"><strong>Clustering coefficient</strong> ↓ from 0.66 to 0.08: friends-of-friends no longer collaborate — the community stopped being a network and became a fan-out.</li>
-        <li style="padding:3px 0 3px 16px"><strong>Toxicity</strong> ↑ 8×: ToxiCR scan of every PR / Issue comment — the remaining few are arguing.</li>
-        <li style="padding:3px 0 3px 16px"><strong>Bus factor = 1</strong>: a single maintainer carries the project. k-core decomposition peels everything else away.</li>
+        <li data-i18n="s14_li1" style="padding:3px 0 3px 16px"><strong>Clustering coefficient</strong> ↓ from 0.66 to 0.08: friends-of-friends no longer collaborate — the community stopped being a network and became a fan-out.</li>
+        <li data-i18n="s14_li2" style="padding:3px 0 3px 16px"><strong>Toxicity</strong> ↑ 8×: ToxiCR scan of every PR / Issue comment — the remaining few are arguing.</li>
+        <li data-i18n="s14_li3" style="padding:3px 0 3px 16px"><strong>Bus factor = 1</strong>: a single maintainer carries the project. k-core decomposition peels everything else away.</li>
       </ul>
       <div class="callout-w callout mt10">
-        <p style="font-size:15px"><strong>Only the graph catches this early.</strong> In 2023 the Stars chart still looked great — but the collaboration topology had already hollowed out.</p>
+        <p data-i18n="s14_callout" style="font-size:15px"><strong>Only the graph catches this early.</strong> In 2023 the Stars chart still looked great — but the collaboration topology had already hollowed out.</p>
       </div>
     </div>
     <div class="divider"></div>
     <div style="flex:1">
-      <p style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:8px">LangChain vs AutoGen — parallel collapse</p>
-      <p style="font-size:14px;color:var(--g4);margin-bottom:8px">Two AI-orchestration frameworks — different scale, same fate curve.</p>
+      <p data-i18n="s14_lc_t" style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:8px">LangChain vs AutoGen — parallel collapse</p>
+      <p data-i18n="s14_lc_d" style="font-size:14px;color:var(--g4);margin-bottom:8px">Two AI-orchestration frameworks — different scale, same fate curve.</p>
       <table class="mt4" style="font-size:14px">
         <thead><tr><th></th><th style="text-align:right">LangChain</th><th style="text-align:right">AutoGen</th></tr></thead>
         <tbody>
-          <tr><td>Peak MAU</td><td style="text-align:right">2,022</td><td style="text-align:right">328</td></tr>
-          <tr><td>2025-12 MAU</td><td style="text-align:right">173 (↓91%)</td><td style="text-align:right;color:var(--red);font-weight:700">2 (↓99%)</td></tr>
-          <tr><td>Maintainer health</td><td style="text-align:right">12.9</td><td style="text-align:right;color:var(--red);font-weight:700">0.0</td></tr>
-          <tr class="hl"><td>2024 net talent flow</td><td style="text-align:right">−14.4%</td><td style="text-align:right">−14.5%</td></tr>
+          <tr><td data-i18n="s14_pk">Peak MAU</td><td style="text-align:right">2,022</td><td style="text-align:right">328</td></tr>
+          <tr><td data-i18n="s14_25">2025-12 MAU</td><td style="text-align:right">173 (↓91%)</td><td style="text-align:right;color:var(--red);font-weight:700">2 (↓99%)</td></tr>
+          <tr><td data-i18n="s14_mh">Maintainer health</td><td style="text-align:right">12.9</td><td style="text-align:right;color:var(--red);font-weight:700">0.0</td></tr>
+          <tr class="hl"><td data-i18n="s14_tf">2024 net talent flow</td><td style="text-align:right">−14.4%</td><td style="text-align:right">−14.5%</td></tr>
         </tbody>
       </table>
-      <p style="font-size:14px;color:var(--g4);margin-top:10px"><strong>The −14.4% / −14.5% twin:</strong> not coincidence. AI orchestration frameworks sit on top of fast-moving model APIs. When the models iterate, the middleware layer loses its moat — and the talent-flow graph shows simultaneous outflow across <em>all</em> projects in the band.</p>
+      <p data-i18n="s14_twin" style="font-size:14px;color:var(--g4);margin-top:10px"><strong>The −14.4% / −14.5% twin:</strong> not coincidence. AI orchestration frameworks sit on top of fast-moving model APIs. When the models iterate, the middleware layer loses its moat — and the talent-flow graph shows simultaneous outflow across <em>all</em> projects in the band.</p>
       <div class="callout mt10">
-        <p style="font-size:15px">
+        <p data-i18n="s14_sig" style="font-size:15px">
           <strong>Graph signature of "false prosperity":</strong><br>
           high event volume · low clustering coefficient · shrinking k-core · toxicity rising.
         </p>
       </div>
-      <p style="font-size:13px;color:var(--g3);margin-top:10px;font-style:italic">Next.js (13K Star) has a toxicity of <strong>17.68%</strong>, #73 in atmosphere. DuckDB has toxicity 0.0%, atmosphere 100. Quality is not size.</p>
+      <p data-i18n="s14_note" style="font-size:13px;color:var(--g3);margin-top:10px;font-style:italic">Next.js (13K Star) has a toxicity of <strong>17.68%</strong>, #73 in atmosphere. DuckDB has toxicity 0.0%, atmosphere 100. Quality is not size.</p>
     </div>
   </div>
 </section>
@@ -696,15 +706,15 @@ RETURN count(DISTINCT affected);
 <section>
   <div class="sh">
     <span class="pill pill-p">Case 3 · Fruit Fly Brain</span>
-    <h2 class="mt4">Has Your Database Ever Held a Brain?</h2>
-    <h3>FlyWire (Nature 2024) released the first complete insect connectome. We loaded it into NeuG — and let it think.</h3>
+    <h2 data-i18n="s15_h2" class="mt4">Has Your Database Ever Held a Brain?</h2>
+    <h3 data-i18n="s15_h3">FlyWire (Nature 2024) released the first complete insect connectome. We loaded it into NeuG — and let it think.</h3>
   </div>
   <div class="panel" style="padding:22px 28px;align-items:stretch">
     <div style="flex:1">
       <div class="mrow" style="gap:18px;justify-content:center">
-        <div class="metric metric-s"><span class="n" style="color:var(--indigo)">139K</span><span class="l">Neurons (nodes)</span></div>
-        <div class="metric metric-s"><span class="n" style="color:var(--indigo)">2.7M</span><span class="l">Connections (edges)</span></div>
-        <div class="metric metric-s"><span class="n" style="color:var(--indigo)">54M</span><span class="l">Synapse weight</span></div>
+        <div class="metric metric-s"><span class="n" style="color:var(--indigo)">139K</span><span data-i18n="s15_n" class="l">Neurons (nodes)</span></div>
+        <div class="metric metric-s"><span class="n" style="color:var(--indigo)">2.7M</span><span data-i18n="s15_c" class="l">Connections (edges)</span></div>
+        <div class="metric metric-s"><span class="n" style="color:var(--indigo)">54M</span><span data-i18n="s15_s" class="l">Synapse weight</span></div>
       </div>
       <div class="schema mt12" style="justify-content:center;font-size:14px">
         <span class="nd">Neuron</span>
@@ -714,7 +724,7 @@ RETURN count(DISTINCT affected);
         <span class="nd">Neuron</span><span class="ed">—SYNAPSE→</span><span class="nd">Neuron</span>
         <span class="ed">{syn_count, nt_type}</span>
       </div>
-      <p style="font-size:14px;color:var(--g4);margin-top:14px">The graph is so naturally the right representation here that the import is almost trivial:</p>
+      <p data-i18n="s15_imp" style="font-size:14px;color:var(--g4);margin-top:14px">The graph is so naturally the right representation here that the import is almost trivial:</p>
       <pre style="font-size:13px" class="mt4"><code class="language-python" data-trim>
 db = neug.Database("flywire.db")
 conn = db.connect()
@@ -728,28 +738,28 @@ conn.execute("COPY Neuron FROM 'neurons.csv'")
 conn.execute("COPY SYNAPSE FROM 'synapses.csv'")
       </code></pre>
       <div class="callout mt10">
-        <p style="font-size:15px"><strong>Scientific surprise baked into the data:</strong> in <em>Drosophila</em>, glutamate (GLUT) is <em>inhibitory</em> (via GluCl channels) — unlike mammals where it's excitatory. A one-line property encoded correctly in the schema.</p>
+        <p data-i18n="s15_sci" style="font-size:15px"><strong>Scientific surprise baked into the data:</strong> in <em>Drosophila</em>, glutamate (GLUT) is <em>inhibitory</em> (via GluCl channels) — unlike mammals where it's excitatory. A one-line property encoded correctly in the schema.</p>
       </div>
     </div>
     <div class="divider"></div>
     <div style="flex:1">
-      <p style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:6px">Why CSR storage wins here</p>
-      <p style="font-size:14px;color:var(--g4);margin-bottom:10px">Neural simulation = spike propagation = <em>visit every neighbor</em>, millions of times. Storage layout decides feasibility.</p>
+      <p data-i18n="s15_csr_t" style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:6px">Why CSR storage wins here</p>
+      <p data-i18n="s15_csr_d" style="font-size:14px;color:var(--g4);margin-bottom:10px">Neural simulation = spike propagation = <em>visit every neighbor</em>, millions of times. Storage layout decides feasibility.</p>
       <div class="card" style="padding:12px 16px;background:rgba(255,59,48,0.04)">
-        <p style="font-size:15px;margin:0;font-weight:600;color:var(--red)">Dense matrix: 139K × 139K</p>
-        <p style="font-size:13px;margin:4px 0 0;color:var(--g4)">≈ 19 billion cells of zeros. Out-of-memory on a laptop.</p>
+        <p data-i18n="s15_dense_t" style="font-size:15px;margin:0;font-weight:600;color:var(--red)">Dense matrix: 139K × 139K</p>
+        <p data-i18n="s15_dense_d" style="font-size:13px;margin:4px 0 0;color:var(--g4)">≈ 19 billion cells of zeros. Out-of-memory on a laptop.</p>
       </div>
       <div class="card mt6" style="padding:12px 16px;background:rgba(52,199,89,0.05)">
-        <p style="font-size:15px;margin:0;font-weight:600;color:var(--green)">NeuG CSR: only the 2.7M real edges</p>
-        <p style="font-size:13px;margin:4px 0 0;color:var(--g4)">Neighbors of a neuron sit in <em>contiguous memory</em>. Lookup is <code>O(out_degree)</code>, not <code>O(N)</code>. Orders of magnitude faster.</p>
+        <p data-i18n="s15_csr_t2" style="font-size:15px;margin:0;font-weight:600;color:var(--green)">NeuG CSR: only the 2.7M real edges</p>
+        <p data-i18n="s15_csr_d2" style="font-size:13px;margin:4px 0 0;color:var(--g4)">Neighbors of a neuron sit in <em>contiguous memory</em>. Lookup is <code>O(out_degree)</code>, not <code>O(N)</code>. Orders of magnitude faster.</p>
       </div>
-      <p style="font-size:16px;font-weight:600;color:var(--g5);margin:14px 0 6px">Extension framework — the secret sauce</p>
-      <p style="font-size:14px;color:var(--g4)">We wrote a 300-line C++ extension <code>lif_sim</code> that reads CSR directly — no data movement, no serialization — and invoke it from Cypher:</p>
+      <p data-i18n="s15_ext_t" style="font-size:16px;font-weight:600;color:var(--g5);margin:14px 0 6px">Extension framework — the secret sauce</p>
+      <p data-i18n="s15_ext_d" style="font-size:14px;color:var(--g4)">We wrote a 300-line C++ extension <code>lif_sim</code> that reads CSR directly — no data movement, no serialization — and invoke it from Cypher:</p>
       <pre style="font-size:13px" class="mt4"><code class="language-sql" data-trim>
 LOAD lif_sim;
 CALL LIF_INIT() RETURN *;
       </code></pre>
-      <p style="font-size:13px;color:var(--g3);margin-top:8px;font-style:italic">Same pattern as Postgres extensions — core stays lean, capabilities extend on demand.</p>
+      <p data-i18n="s15_ext_n" style="font-size:13px;color:var(--g3);margin-top:8px;font-style:italic">Same pattern as Postgres extensions — core stays lean, capabilities extend on demand.</p>
     </div>
   </div>
 </section>
@@ -758,47 +768,47 @@ CALL LIF_INIT() RETURN *;
 <section>
   <div class="sh">
     <span class="pill pill-p">Case 3 · Fruit Fly Brain</span>
-    <h2 class="mt4">Make the Brain Think — in Four Cypher Calls</h2>
-    <h3>Give the fly a taste of sugar, then watch a spike wave ripple through 10,000 neurons</h3>
+    <h2 data-i18n="s16_h2" class="mt4">Make the Brain Think — in Four Cypher Calls</h2>
+    <h3 data-i18n="s16_h3">Give the fly a taste of sugar, then watch a spike wave ripple through 10,000 neurons</h3>
   </div>
   <div class="cols" style="gap:28px">
     <div style="flex:1">
-      <p style="font-size:17px;font-weight:600;color:var(--g5);margin-bottom:6px">① Find the sensory neurons</p>
+      <p data-i18n="s16_s1" style="font-size:17px;font-weight:600;color:var(--g5);margin-bottom:6px">① Find the sensory neurons</p>
       <pre style="font-size:13px"><code class="language-sql" data-trim>
 MATCH (n:Neuron)
 WHERE n.sub_class CONTAINS 'sugar'
   AND n.flow = 'afferent'
 RETURN n.root_id;  -- → 20 sugar GRNs
       </code></pre>
-      <p style="font-size:17px;font-weight:600;color:var(--g5);margin:12px 0 6px">② Inject stimulus</p>
+      <p data-i18n="s16_s2" style="font-size:17px;font-weight:600;color:var(--g5);margin:12px 0 6px">② Inject stimulus</p>
       <pre style="font-size:13px"><code class="language-sql" data-trim>
 CALL LIF_SET_STIMULUS(id, 20.0) RETURN *;
       </code></pre>
-      <p style="font-size:17px;font-weight:600;color:var(--g5);margin:12px 0 6px">③ Run the simulation</p>
+      <p data-i18n="s16_s3" style="font-size:17px;font-weight:600;color:var(--g5);margin:12px 0 6px">③ Run the simulation</p>
       <pre style="font-size:13px"><code class="language-sql" data-trim>
 CALL LIF_SIMULATE(20) RETURN *;
 -- 20 propagation rounds over CSR
       </code></pre>
-      <p style="font-size:17px;font-weight:600;color:var(--g5);margin:12px 0 6px">④ Read the result — right in Cypher</p>
+      <p data-i18n="s16_s4" style="font-size:17px;font-weight:600;color:var(--g5);margin:12px 0 6px">④ Read the result — right in Cypher</p>
       <pre style="font-size:13px"><code class="language-sql" data-trim>
 CALL LIF_GET_STATE() RETURN *;
       </code></pre>
     </div>
     <div style="flex:1.1">
-      <p style="font-size:17px;font-weight:600;color:var(--g5);margin-bottom:6px">The spike wave, round by round</p>
-      <p style="font-size:14px;color:var(--g4);margin-bottom:8px">20 sensory neurons stimulated → <strong>10,295</strong> spiked. A <strong>514×</strong> amplification.</p>
+      <p data-i18n="s16_wave" style="font-size:17px;font-weight:600;color:var(--g5);margin-bottom:6px">The spike wave, round by round</p>
+      <p data-i18n="s16_wave_d" style="font-size:14px;color:var(--g4);margin-bottom:8px">20 sensory neurons stimulated → <strong>10,295</strong> spiked. A <strong>514×</strong> amplification.</p>
       <div class="mt6">
-        <div class="bar" style="margin:6px 0"><span class="bar-lb" style="width:72px">Round 0</span><div class="bar-tk" style="height:16px"><div class="bar-fl bf-b" style="width:1%"></div></div><span class="bar-v" style="width:70px">20</span></div>
-        <div class="bar" style="margin:6px 0"><span class="bar-lb" style="width:72px">Round 2</span><div class="bar-tk" style="height:16px"><div class="bar-fl bf-b" style="width:3%"></div></div><span class="bar-v" style="width:70px">93</span></div>
-        <div class="bar" style="margin:6px 0"><span class="bar-lb" style="width:72px">Round 4</span><div class="bar-tk" style="height:16px"><div class="bar-fl bf-b" style="width:10%"></div></div><span class="bar-v" style="width:70px">352</span></div>
-        <div class="bar" style="margin:6px 0"><span class="bar-lb" style="width:72px">Round 6</span><div class="bar-tk" style="height:16px"><div class="bar-fl bf-p" style="width:40%"></div></div><span class="bar-v" style="width:70px">1,417</span></div>
-        <div class="bar" style="margin:6px 0"><span class="bar-lb" style="width:72px;color:var(--red);font-weight:700">Round 7 ←</span><div class="bar-tk" style="height:16px"><div class="bar-fl bf-r" style="width:98%"></div></div><span class="bar-v" style="width:70px;color:var(--red);font-weight:700">3,705</span></div>
-        <div class="bar" style="margin:6px 0"><span class="bar-lb" style="width:72px">Round 10</span><div class="bar-tk" style="height:16px"><div class="bar-fl bf-p" style="width:25%"></div></div><span class="bar-v" style="width:70px">890</span></div>
-        <div class="bar" style="margin:6px 0"><span class="bar-lb" style="width:72px">Round 20</span><div class="bar-tk" style="height:16px"><div class="bar-fl bf-b" style="width:0.5%"></div></div><span class="bar-v" style="width:70px">1</span></div>
+        <div class="bar" style="margin:6px 0"><span data-i18n="s16_r0" class="bar-lb" style="width:72px">Round 0</span><div class="bar-tk" style="height:16px"><div class="bar-fl bf-b" style="width:1%"></div></div><span class="bar-v" style="width:70px">20</span></div>
+        <div class="bar" style="margin:6px 0"><span data-i18n="s16_r2" class="bar-lb" style="width:72px">Round 2</span><div class="bar-tk" style="height:16px"><div class="bar-fl bf-b" style="width:3%"></div></div><span class="bar-v" style="width:70px">93</span></div>
+        <div class="bar" style="margin:6px 0"><span data-i18n="s16_r4" class="bar-lb" style="width:72px">Round 4</span><div class="bar-tk" style="height:16px"><div class="bar-fl bf-b" style="width:10%"></div></div><span class="bar-v" style="width:70px">352</span></div>
+        <div class="bar" style="margin:6px 0"><span data-i18n="s16_r6" class="bar-lb" style="width:72px">Round 6</span><div class="bar-tk" style="height:16px"><div class="bar-fl bf-p" style="width:40%"></div></div><span class="bar-v" style="width:70px">1,417</span></div>
+        <div class="bar" style="margin:6px 0"><span data-i18n="s16_r7" class="bar-lb" style="width:72px;color:var(--red);font-weight:700">Round 7 ←</span><div class="bar-tk" style="height:16px"><div class="bar-fl bf-r" style="width:98%"></div></div><span class="bar-v" style="width:70px;color:var(--red);font-weight:700">3,705</span></div>
+        <div class="bar" style="margin:6px 0"><span data-i18n="s16_r10" class="bar-lb" style="width:72px">Round 10</span><div class="bar-tk" style="height:16px"><div class="bar-fl bf-p" style="width:25%"></div></div><span class="bar-v" style="width:70px">890</span></div>
+        <div class="bar" style="margin:6px 0"><span data-i18n="s16_r20" class="bar-lb" style="width:72px">Round 20</span><div class="bar-tk" style="height:16px"><div class="bar-fl bf-b" style="width:0.5%"></div></div><span class="bar-v" style="width:70px">1</span></div>
       </div>
       <img src="assets/flywire/figures/cumulative_spikes.png" class="img-ctr mt10" style="max-height:200px">
       <div class="callout-g callout mt10">
-        <p style="font-size:15px"><strong>Every round is a CSR neighbor walk.</strong> The whole simulation runs inside NeuG — no Python loop, no data copy. 139K neurons × 20 rounds completes in seconds.</p>
+        <p data-i18n="s16_callout" style="font-size:15px"><strong>Every round is a CSR neighbor walk.</strong> The whole simulation runs inside NeuG — no Python loop, no data copy. 139K neurons × 20 rounds completes in seconds.</p>
       </div>
     </div>
   </div>
@@ -808,8 +818,8 @@ CALL LIF_GET_STATE() RETURN *;
 <section>
   <div class="sh">
     <span class="pill pill-p">Case 3 · Fruit Fly Brain</span>
-    <h2 class="mt4">The Database Predicted "The Fly Wants to Eat"</h2>
-    <h3>Same brain, two tastes — the graph tells sugar from bitter by watching which motor neurons fire</h3>
+    <h2 data-i18n="s17_h2" class="mt4">The Database Predicted "The Fly Wants to Eat"</h2>
+    <h3 data-i18n="s17_h3">Same brain, two tastes — the graph tells sugar from bitter by watching which motor neurons fire</h3>
   </div>
   <div class="cols">
     <div>
@@ -817,32 +827,32 @@ CALL LIF_GET_STATE() RETURN *;
         <div class="card tac" style="flex:1;background:linear-gradient(135deg,#34C759,#30B0C7);color:white;padding:18px">
           <small style="color:rgba(255,255,255,0.8);letter-spacing:0.08em">🍬 SWEET</small>
           <span style="font-size:30px;font-weight:700;display:block;color:white">10,295</span>
-          <small style="color:rgba(255,255,255,0.6)">neurons activated</small>
+          <small data-i18n="s17_act" style="color:rgba(255,255,255,0.6)">neurons activated</small>
         </div>
         <div class="card tac" style="flex:1;padding:18px;background:linear-gradient(135deg,#FF9500,#FF3B30);color:white">
           <small style="color:rgba(255,255,255,0.8);letter-spacing:0.08em">🌿 BITTER</small>
           <span style="font-size:30px;font-weight:700;display:block;color:white">10,351</span>
-          <small style="color:rgba(255,255,255,0.6)">neurons activated</small>
+          <small data-i18n="s17_act" style="color:rgba(255,255,255,0.6)">neurons activated</small>
         </div>
       </div>
-      <p style="font-size:14px;color:var(--g4);margin-top:12px">Total spiking count is almost identical. But <em>which</em> neurons fire — that's where the answer lives. Zoom into the 110 motor neurons:</p>
+      <p data-i18n="s17_zoom" style="font-size:14px;color:var(--g4);margin-top:12px">Total spiking count is almost identical. But <em>which</em> neurons fire — that's where the answer lives. Zoom into the 110 motor neurons:</p>
       <table class="mt6">
-        <thead><tr><th>Motor-neuron type</th><th style="text-align:right">Sugar</th><th style="text-align:right">Bitter</th><th style="text-align:right">Δ</th></tr></thead>
+        <thead><tr><th data-i18n="s17_mh">Motor-neuron type</th><th style="text-align:right">Sugar</th><th style="text-align:right">Bitter</th><th style="text-align:right">Δ</th></tr></thead>
         <tbody>
-          <tr class="hl"><td><strong>ingestion_motor</strong> <small style="color:var(--g3)">(feeding)</small></td><td style="text-align:right;color:var(--green);font-weight:700">19</td><td style="text-align:right">6</td><td style="text-align:right;color:var(--green);font-weight:700">+13</td></tr>
+          <tr class="hl"><td><strong>ingestion_motor</strong> <small data-i18n="s17_feed" style="color:var(--g3)">(feeding)</small></td><td style="text-align:right;color:var(--green);font-weight:700">19</td><td style="text-align:right">6</td><td style="text-align:right;color:var(--green);font-weight:700">+13</td></tr>
           <tr><td>proboscis_motor</td><td style="text-align:right">16</td><td style="text-align:right">17</td><td style="text-align:right">−1</td></tr>
           <tr><td>neck_motor</td><td style="text-align:right">11</td><td style="text-align:right">15</td><td style="text-align:right">−4</td></tr>
           <tr><td>antennal_motor</td><td style="text-align:right">7</td><td style="text-align:right">6</td><td style="text-align:right">+1</td></tr>
         </tbody>
       </table>
       <div class="callout-g callout mt10">
-        <p style="font-size:15px"><strong>ingestion_motor_neuron fires 3× more under sugar.</strong> "Sugar → feed" — the behavioral prediction is right there, written in spike counts. All from one stored graph and one Cypher command.</p>
+        <p data-i18n="s17_callout" style="font-size:15px"><strong>ingestion_motor_neuron fires 3× more under sugar.</strong> "Sugar → feed" — the behavioral prediction is right there, written in spike counts. All from one stored graph and one Cypher command.</p>
       </div>
     </div>
     <div>
       <img src="assets/flywire/figures/motor_neuron_comparison.png" class="img-ctr" style="max-height:230px">
       <img src="assets/flywire/figures/heatmap.png" class="img-ctr mt12" style="max-height:230px">
-      <p style="font-size:13px;color:var(--g3);margin-top:10px;font-style:italic">Honest disclaimer: this is technical demonstration, not precision behavior prediction (no MN9 annotation, no firing-rate calibration). But the framework is ready — when the next connectome (mouse, zebrafish) arrives, NeuG is waiting.</p>
+      <p data-i18n="s17_disc" style="font-size:13px;color:var(--g3);margin-top:10px;font-style:italic">Honest disclaimer: this is technical demonstration, not precision behavior prediction (no MN9 annotation, no firing-rate calibration). But the framework is ready — when the next connectome (mouse, zebrafish) arrives, NeuG is waiting.</p>
     </div>
   </div>
 </section>
@@ -851,46 +861,46 @@ CALL LIF_GET_STATE() RETURN *;
 <section style="display:flex!important;flex-direction:column;justify-content:center;padding:48px 64px">
   <div class="sh" style="text-align:center;margin-bottom:20px">
     <span class="pill pill-o" style="font-size:14px;padding:5px 16px">Case 4 · Exploratory BI</span>
-    <h2 class="mt4" style="font-size:38px">One Question Leads to Four — Why That Used to Be Impossible</h2>
-    <h3 style="font-size:18px">OpenAIRE · 22M entities · 94M relations · one question about war · and a ladder of follow-ups</h3>
+    <h2 data-i18n="s18_h2" class="mt4" style="font-size:38px">One Question Leads to Four — Why That Used to Be Impossible</h2>
+    <h3 data-i18n="s18_h3" style="font-size:18px">OpenAIRE · 22M entities · 94M relations · one question about war · and a ladder of follow-ups</h3>
   </div>
   <div class="panel" style="padding:24px 28px;align-items:stretch">
     <div style="flex:1">
-      <p style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:8px">The graph schema</p>
+      <p data-i18n="s18_schema" style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:8px">The graph schema</p>
       <div class="schema mt4"><span class="nd">Author</span><span class="ed">—authored→</span><span class="nd">Publication</span><span class="ed">—affiliated→</span><span class="nd">Organization</span></div>
       <div class="schema"><span class="nd">Publication</span><span class="ed">—funded_by→</span><span class="nd">Funding</span></div>
       <div class="schema"><span class="nd">Publication</span><span class="ed">—published_in→</span><span class="nd">Journal</span></div>
       <div class="mrow mt12">
-        <div class="metric metric-s"><span class="n" style="color:var(--orange)">22M</span><span class="l">entities</span></div>
-        <div class="metric metric-s"><span class="n" style="color:var(--orange)">94M</span><span class="l">relationships</span></div>
+        <div class="metric metric-s"><span class="n" style="color:var(--orange)">22M</span><span data-i18n="s18_ent" class="l">entities</span></div>
+        <div class="metric metric-s"><span class="n" style="color:var(--orange)">94M</span><span data-i18n="s18_rel" class="l">relationships</span></div>
       </div>
-      <p style="font-size:17px;color:var(--g5);font-weight:600;margin-top:16px;font-style:italic">"How did the Russia-Ukraine conflict affect Russian academia?"</p>
+      <p data-i18n="s18_q" style="font-size:17px;color:var(--g5);font-weight:600;margin-top:16px;font-style:italic">"How did the Russia-Ukraine conflict affect Russian academia?"</p>
       <div class="callout-w callout mt12">
-        <p style="font-size:15px"><strong>Traditional BI:</strong> each follow-up = redesign schema → rebuild wide table → rerun.<br>
+        <p data-i18n="s18_trad" style="font-size:15px"><strong>Traditional BI:</strong> each follow-up = redesign schema → rebuild wide table → rerun.<br>
         Cost of Q2, Q3, Q4 = Q1 × 3. Most analyses stop at Q1.</p>
       </div>
       <div class="callout mt10">
-        <p style="font-size:15px"><strong>NeuG:</strong> each step is <code>Source → Join → View</code> on the same hypergraph. Intermediate results are materialized — Q4 doesn't rescan 94M edges.</p>
+        <p data-i18n="s18_neug" style="font-size:15px"><strong>NeuG:</strong> each step is <code>Source → Join → View</code> on the same hypergraph. Intermediate results are materialized — Q4 doesn't rescan 94M edges.</p>
       </div>
     </div>
     <div class="divider"></div>
     <div style="flex:1.15;display:flex;flex-direction:column;justify-content:center;gap:10px">
-      <p style="font-size:18px;font-weight:600;color:var(--g5);margin:0 0 4px">Four steps, each reusing the last</p>
+      <p data-i18n="s18_four" style="font-size:18px;font-weight:600;color:var(--g5);margin:0 0 4px">Four steps, each reusing the last</p>
       <div class="card" style="padding:12px 16px;border-left:3px solid var(--blue)">
-        <p style="font-size:15px;margin:0;font-weight:600">Q1 · Publication volume?</p>
-        <p style="font-size:14px;margin:4px 0 0;color:var(--g4)">Match <code>Pub ↔ Org</code>, group by country × year → Russia <strong>−50.9%</strong> (2020–2024). Global total rose. Not a worldwide trend.</p>
+        <p data-i18n="s18_q1t" style="font-size:15px;margin:0;font-weight:600">Q1 · Publication volume?</p>
+        <p data-i18n="s18_q1d" style="font-size:14px;margin:4px 0 0;color:var(--g4)">Match <code>Pub ↔ Org</code>, group by country × year → Russia <strong>−50.9%</strong> (2020–2024). Global total rose. Not a worldwide trend.</p>
       </div>
       <div class="card" style="padding:12px 16px;border-left:3px solid var(--indigo)">
-        <p style="font-size:15px;margin:0;font-weight:600">Q2 · Funding cut? <small style="color:var(--g3);font-weight:400">joins Funding to Q1's backbone</small></p>
-        <p style="font-size:14px;margin:4px 0 0;color:var(--g4)">EU Commission stopped funding Russian orgs <strong>completely</strong>. 26 Ukrainian orgs still funded. Matches the official announcement.</p>
+        <p data-i18n="s18_q2t" style="font-size:15px;margin:0;font-weight:600">Q2 · Funding cut? <small style="color:var(--g3);font-weight:400">joins Funding to Q1's backbone</small></p>
+        <p data-i18n="s18_q2d" style="font-size:14px;margin:4px 0 0;color:var(--g4)">EU Commission stopped funding Russian orgs <strong>completely</strong>. 26 Ukrainian orgs still funded. Matches the official announcement.</p>
       </div>
       <div class="card" style="padding:12px 16px;border-left:3px solid var(--purple)">
-        <p style="font-size:15px;margin:0;font-weight:600">Q3 · Journal exclusion? <small style="color:var(--g3);font-weight:400">adds Publisher dimension</small></p>
-        <p style="font-size:14px;margin:4px 0 0;color:var(--g4)">EDP Sciences cut Russian submissions selectively — other countries unchanged. Not a contraction, a choice.</p>
+        <p data-i18n="s18_q3t" style="font-size:15px;margin:0;font-weight:600">Q3 · Journal exclusion? <small style="color:var(--g3);font-weight:400">adds Publisher dimension</small></p>
+        <p data-i18n="s18_q3d" style="font-size:14px;margin:4px 0 0;color:var(--g4)">EDP Sciences cut Russian submissions selectively — other countries unchanged. Not a contraction, a choice.</p>
       </div>
       <div class="card" style="padding:12px 16px;border-left:3px solid var(--red)">
-        <p style="font-size:15px;margin:0;font-weight:600">Q4 · Collaboration network? <small style="color:var(--g3);font-weight:400">walks Author→Pub→Org cross-country</small></p>
-        <p style="font-size:14px;margin:4px 0 0;color:var(--g4)">Biggest drop by partner country, 2021→2024 → <strong>Turkey −98.4%</strong>. Wait — Turkey?</p>
+        <p data-i18n="s18_q4t" style="font-size:15px;margin:0;font-weight:600">Q4 · Collaboration network? <small style="color:var(--g3);font-weight:400">walks Author→Pub→Org cross-country</small></p>
+        <p data-i18n="s18_q4d" style="font-size:14px;margin:4px 0 0;color:var(--g4)">Biggest drop by partner country, 2021→2024 → <strong>Turkey −98.4%</strong>. Wait — Turkey?</p>
       </div>
     </div>
   </div>
@@ -900,39 +910,39 @@ CALL LIF_GET_STATE() RETURN *;
 <section style="display:flex!important;flex-direction:column;justify-content:center;padding:48px 64px">
   <div class="sh" style="text-align:center;margin-bottom:20px">
     <span class="pill pill-o" style="font-size:14px;padding:5px 16px">Case 4 · Exploratory BI</span>
-    <h2 class="mt4" style="font-size:38px">The Turkey Shock</h2>
-    <h3 style="font-size:19px">If sanctions caused the drop, sanctioned countries should drop the most. They don't.</h3>
+    <h2 data-i18n="s19_h2" class="mt4" style="font-size:38px">The Turkey Shock</h2>
+    <h3 data-i18n="s19_h3" style="font-size:19px">If sanctions caused the drop, sanctioned countries should drop the most. They don't.</h3>
   </div>
   <div class="panel" style="padding:24px 30px;align-items:center">
     <div style="flex:1.3">
-      <p style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:8px">Russian co-authorship with partner countries (2021 → 2024)</p>
+      <p data-i18n="s19_title" style="font-size:18px;font-weight:600;color:var(--g5);margin-bottom:8px">Russian co-authorship with partner countries (2021 → 2024)</p>
       <div class="mt8">
-        <div class="bar" style="font-size:17px;margin:10px 0"><span class="bar-lb" style="width:170px;font-size:16px">🇹🇷 Turkey <small style="color:var(--g3)">(no sanctions)</small></span><div class="bar-tk" style="height:26px"><div class="bar-fl bf-r" style="width:98%"></div></div><span class="bar-v" style="color:var(--red);font-weight:700;font-size:17px">−98.4%</span></div>
-        <div class="bar" style="font-size:17px;margin:10px 0"><span class="bar-lb" style="width:170px;font-size:16px">🇩🇪 Germany <small style="color:var(--g3)">(sanctioned)</small></span><div class="bar-tk" style="height:26px"><div class="bar-fl bf-o" style="width:93%"></div></div><span class="bar-v" style="font-size:16px">−93.0%</span></div>
-        <div class="bar" style="font-size:17px;margin:10px 0"><span class="bar-lb" style="width:170px;font-size:16px">🇺🇸 USA <small style="color:var(--g3)">(sanctioned)</small></span><div class="bar-tk" style="height:26px"><div class="bar-fl bf-o" style="width:92%"></div></div><span class="bar-v" style="font-size:16px">−92.5%</span></div>
-        <div class="bar" style="font-size:17px;margin:10px 0"><span class="bar-lb" style="width:170px;font-size:16px">🇨🇳 China <small style="color:var(--g3)">(no sanctions)</small></span><div class="bar-tk" style="height:26px"><div class="bar-fl bf-b" style="width:80%"></div></div><span class="bar-v" style="font-size:16px">−80.4%</span></div>
+        <div class="bar" style="font-size:17px;margin:10px 0"><span class="bar-lb" style="width:170px;font-size:16px">🇹🇷 Turkey <small data-i18n="s19_ns" style="color:var(--g3)">(no sanctions)</small></span><div class="bar-tk" style="height:26px"><div class="bar-fl bf-r" style="width:98%"></div></div><span class="bar-v" style="color:var(--red);font-weight:700;font-size:17px">−98.4%</span></div>
+        <div class="bar" style="font-size:17px;margin:10px 0"><span class="bar-lb" style="width:170px;font-size:16px">🇩🇪 Germany <small data-i18n="s19_s" style="color:var(--g3)">(sanctioned)</small></span><div class="bar-tk" style="height:26px"><div class="bar-fl bf-o" style="width:93%"></div></div><span class="bar-v" style="font-size:16px">−93.0%</span></div>
+        <div class="bar" style="font-size:17px;margin:10px 0"><span class="bar-lb" style="width:170px;font-size:16px">🇺🇸 USA <small data-i18n="s19_s" style="color:var(--g3)">(sanctioned)</small></span><div class="bar-tk" style="height:26px"><div class="bar-fl bf-o" style="width:92%"></div></div><span class="bar-v" style="font-size:16px">−92.5%</span></div>
+        <div class="bar" style="font-size:17px;margin:10px 0"><span class="bar-lb" style="width:170px;font-size:16px">🇨🇳 China <small data-i18n="s19_ns" style="color:var(--g3)">(no sanctions)</small></span><div class="bar-tk" style="height:26px"><div class="bar-fl bf-b" style="width:80%"></div></div><span class="bar-v" style="font-size:16px">−80.4%</span></div>
       </div>
       <div class="callout-w callout mt14">
-        <p style="font-size:16px"><strong>The obvious hypothesis — "sanctions caused it" — breaks.</strong> Turkey didn't sanction Russia, yet collaboration with Turkey fell the hardest.</p>
-        <p class="mt4" style="font-size:16px">What the graph reveals is <strong>systemic marginalization</strong>: Russia is being <em>structurally disconnected</em> from the global academic network — not because of policy, but because the entire topology reshaped around it.</p>
+        <p data-i18n="s19_clt1" style="font-size:16px"><strong>The obvious hypothesis — "sanctions caused it" — breaks.</strong> Turkey didn't sanction Russia, yet collaboration with Turkey fell the hardest.</p>
+        <p data-i18n="s19_clt2" class="mt4" style="font-size:16px">What the graph reveals is <strong>systemic marginalization</strong>: Russia is being <em>structurally disconnected</em> from the global academic network — not because of policy, but because the entire topology reshaped around it.</p>
       </div>
     </div>
     <div class="divider"></div>
     <div style="flex:1;display:flex;flex-direction:column;gap:10px">
-      <p style="font-size:17px;font-weight:600;color:var(--g5);margin:0 0 4px">Why this is hard without NeuG</p>
+      <p data-i18n="s19_why" style="font-size:17px;font-weight:600;color:var(--g5);margin:0 0 4px">Why this is hard without NeuG</p>
       <div class="card" style="padding:12px 16px">
-        <p style="font-size:15px;margin:0;font-weight:600;color:var(--orange)">Hypergraph model</p>
-        <p style="font-size:13px;margin:4px 0 0;color:var(--g4)">Schema grows with each question. Q4 added "partner country" without rebuilding anything — just one more <code>Join</code> on the existing view.</p>
+        <p data-i18n="s19_hg_t" style="font-size:15px;margin:0;font-weight:600;color:var(--orange)">Hypergraph model</p>
+        <p data-i18n="s19_hg_d" style="font-size:13px;margin:4px 0 0;color:var(--g4)">Schema grows with each question. Q4 added "partner country" without rebuilding anything — just one more <code>Join</code> on the existing view.</p>
       </div>
       <div class="card" style="padding:12px 16px">
-        <p style="font-size:15px;margin:0;font-weight:600;color:var(--orange)">Unbiased sampling</p>
-        <p style="font-size:13px;margin:4px 0 0;color:var(--g4)">On 94M edges, exhaustive subgraph matching is infeasible. NeuG uniformly samples matches — <strong>COUNT error 0.27%, MAX near zero</strong>. Trend judgments stay correct; cost drops 10-100×.</p>
+        <p data-i18n="s19_ub_t" style="font-size:15px;margin:0;font-weight:600;color:var(--orange)">Unbiased sampling</p>
+        <p data-i18n="s19_ub_d" style="font-size:13px;margin:4px 0 0;color:var(--g4)">On 94M edges, exhaustive subgraph matching is infeasible. NeuG uniformly samples matches — <strong>COUNT error 0.27%, MAX near zero</strong>. Trend judgments stay correct; cost drops 10-100×.</p>
       </div>
       <div class="card" style="padding:12px 16px">
-        <p style="font-size:15px;margin:0;font-weight:600;color:var(--orange)">In-situ computation</p>
-        <p style="font-size:13px;margin:4px 0 0;color:var(--g4)">NeuG runs the sampling kernel directly inside the storage engine — no ETL to another system. On LDBC SNB SF10 it ran all 13 queries (Neo4j 7/13, MySQL 2/13). <strong>16× vs Neo4j</strong>, <strong>47× vs MySQL</strong>.</p>
+        <p data-i18n="s19_is_t" style="font-size:15px;margin:0;font-weight:600;color:var(--orange)">In-situ computation</p>
+        <p data-i18n="s19_is_d" style="font-size:13px;margin:4px 0 0;color:var(--g4)">NeuG runs the sampling kernel directly inside the storage engine — no ETL to another system. On LDBC SNB SF10 it ran all 13 queries (Neo4j 7/13, MySQL 2/13). <strong>16× vs Neo4j</strong>, <strong>47× vs MySQL</strong>.</p>
       </div>
-      <p style="font-size:13px;color:var(--g3);margin-top:4px;font-style:italic">Paper: <em>"A Hypergraph-Based Framework for Exploratory Business Intelligence"</em> · arXiv:2603.10625</p>
+      <p data-i18n="s19_paper" style="font-size:13px;color:var(--g3);margin-top:4px;font-style:italic">Paper: <em>"A Hypergraph-Based Framework for Exploratory Business Intelligence"</em> · arXiv:2603.10625</p>
     </div>
   </div>
 </section>
@@ -940,36 +950,36 @@ CALL LIF_GET_STATE() RETURN *;
 <!-- 20 ──── SUMMARY ──── -->
 <section>
   <div class="sh">
-    <h2>Why NeuG Matters</h2>
+    <h2 data-i18n="s20_h2">Why NeuG Matters</h2>
   </div>
   <div class="cols mt10">
     <div>
-      <p class="f15" style="font-weight:600;color:var(--g5)">NeuG = Simple + Fast</p>
+      <p data-i18n="s20_sf" class="f15" style="font-weight:600;color:var(--g5)">NeuG = Simple + Fast</p>
       <ul class="ckl">
-        <li><code>pip install neug</code> — zero config, in-process</li>
-        <li>Full Cypher with GOpt graph-native optimizer</li>
-        <li><strong>287×</strong> vs LadybugDB · <strong>50.6×</strong> vs Neo4j</li>
-        <li>Embedded ↔ Service with <code>db.serve()</code></li>
-        <li>Extension framework for custom computation</li>
+        <li data-i18n="s20_li1"><code>pip install neug</code> — zero config, in-process</li>
+        <li data-i18n="s20_li2">Full Cypher with GOpt graph-native optimizer</li>
+        <li data-i18n="s20_li3"><strong>287×</strong> vs LadybugDB · <strong>50.6×</strong> vs Neo4j</li>
+        <li data-i18n="s20_li4">Embedded ↔ Service with <code>db.serve()</code></li>
+        <li data-i18n="s20_li5">Extension framework for custom computation</li>
       </ul>
-      <p class="f15 mt12" style="font-weight:600;color:var(--g5)">Roadmap</p>
+      <p data-i18n="s20_rm" class="f15 mt12" style="font-weight:600;color:var(--g5)">Roadmap</p>
       <ul class="sl">
-        <li>Node.js bindings — AI Agent integration</li>
-        <li>Graph algorithms — Leiden, PageRank, K-Core</li>
-        <li>Data lake — S3/OSS + Parquet + GraphAr</li>
-        <li>Vector extensions — RAG &amp; GraphRAG</li>
+        <li data-i18n="s20_rm1">Node.js bindings — AI Agent integration</li>
+        <li data-i18n="s20_rm2">Graph algorithms — Leiden, PageRank, K-Core</li>
+        <li data-i18n="s20_rm3">Data lake — S3/OSS + Parquet + GraphAr</li>
+        <li data-i18n="s20_rm4">Vector extensions — RAG &amp; GraphRAG</li>
       </ul>
     </div>
     <div>
-      <p class="f15" style="font-weight:600;color:var(--g5)">Four domains, one pattern: the graph reveals what counting can't</p>
-      <div class="insight-item mt4"><p class="f13 mb0"><span class="tag">01</span> <strong>Linux:</strong> <code>free_irq</code> → 3 hops → 1,390 functions shaken. mm/ is 0.8% of code yet 35% of hottest files. A GPU driver is bigger than mm/.</p></div>
-      <div class="insight-item mt4"><p class="f13 mb0"><span class="tag">02</span> <strong>GitHub:</strong> Ollama (165K⭐) ranks #68, vLLM (73K⭐) ranks #7. Clustering coefficient catches a dying community before the Star chart notices.</p></div>
-      <div class="insight-item mt4"><p class="f13 mb0"><span class="tag">03</span> <strong>Fly brain:</strong> 20 sugar neurons → 10,295 spikes → ingestion-motor fires 3× more. CSR traversal + a 300-line extension. The database predicts behavior.</p></div>
-      <div class="insight-item mt4"><p class="f13 mb0"><span class="tag">04</span> <strong>Academia:</strong> four questions, each reused the last. The biggest collaboration drop is Turkey (no sanctions) — only the graph could surface that.</p></div>
+      <p data-i18n="s20_4d" class="f15" style="font-weight:600;color:var(--g5)">Four domains, one pattern: the graph reveals what counting can't</p>
+      <div class="insight-item mt4"><p class="f13 mb0"><span class="tag">01</span> <span data-i18n="s20_i1"><strong>Linux:</strong> <code>free_irq</code> → 3 hops → 1,390 functions shaken. mm/ is 0.8% of code yet 35% of hottest files. A GPU driver is bigger than mm/.</span></p></div>
+      <div class="insight-item mt4"><p class="f13 mb0"><span class="tag">02</span> <span data-i18n="s20_i2"><strong>GitHub:</strong> Ollama (165K⭐) ranks #68, vLLM (73K⭐) ranks #7. Clustering coefficient catches a dying community before the Star chart notices.</span></p></div>
+      <div class="insight-item mt4"><p class="f13 mb0"><span class="tag">03</span> <span data-i18n="s20_i3"><strong>Fly brain:</strong> 20 sugar neurons → 10,295 spikes → ingestion-motor fires 3× more. CSR traversal + a 300-line extension. The database predicts behavior.</span></p></div>
+      <div class="insight-item mt4"><p class="f13 mb0"><span class="tag">04</span> <span data-i18n="s20_i4"><strong>Academia:</strong> four questions, each reused the last. The biggest collaboration drop is Turkey (no sanctions) — only the graph could surface that.</span></p></div>
       <div class="tac mt16">
         <a href="https://github.com/alibaba/neug" target="_blank" class="gh-btn">
           <svg viewBox="0 0 16 16" style="width:18px;height:18px;fill:white"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-          Star on GitHub ⭐
+          <span data-i18n="s20_star">Star on GitHub ⭐</span>
         </a>
       </div>
     </div>
@@ -978,12 +988,18 @@ CALL LIF_GET_STATE() RETURN *;
 
 <!-- 21 ──── THANK YOU ──── -->
 <section class="vc" data-background-gradient="linear-gradient(135deg, #0071E3 0%, #5856D6 100%)">
-  <h1 style="color:white;font-size:60px;margin-bottom:10px">Thank You</h1>
-  <p style="color:rgba(255,255,255,0.7);font-size:20px">Questions &amp; Discussion</p>
-  <div style="display:flex;gap:44px;margin-top:40px">
-    <div class="tac"><small style="color:rgba(255,255,255,0.4)">GitHub</small><p style="color:white;font-size:16px;font-weight:600;margin-top:4px">github.com/alibaba/neug</p></div>
-    <div class="tac"><small style="color:rgba(255,255,255,0.4)">Install</small><p style="color:white;font-size:16px;font-weight:600;font-family:monospace;margin-top:4px">pip install neug</p></div>
-    <div class="tac"><small style="color:rgba(255,255,255,0.4)">Docs</small><p style="color:white;font-size:16px;font-weight:600;margin-top:4px">graphscope.io/neug</p></div>
+  <h1 data-i18n="s21_h1" style="color:white;font-size:60px;margin-bottom:10px">Thank You</h1>
+  <p data-i18n="s21_p" style="color:rgba(255,255,255,0.7);font-size:20px">Questions &amp; Discussion</p>
+  <div style="display:flex;gap:44px;margin-top:32px;align-items:center">
+    <div class="tac"><small data-i18n="s21_gh" style="color:rgba(255,255,255,0.4)">GitHub</small><p style="color:white;font-size:16px;font-weight:600;margin-top:4px">github.com/alibaba/neug</p></div>
+    <div class="tac"><small data-i18n="s21_inst" style="color:rgba(255,255,255,0.4)">Install</small><p style="color:white;font-size:16px;font-weight:600;font-family:monospace;margin-top:4px">pip install neug</p></div>
+    <div class="tac"><small data-i18n="s21_docs" style="color:rgba(255,255,255,0.4)">Docs</small><p style="color:white;font-size:16px;font-weight:600;margin-top:4px">graphscope.io/neug</p></div>
+  </div>
+  <div class="mt28" style="display:flex;flex-direction:column;align-items:center;gap:8px">
+    <a href="https://github.com/alibaba/neug" target="_blank">
+      <img src="neug-github.png" alt="NeuG GitHub QR" class="noshadow" style="width:130px;height:130px;border-radius:12px;background:white;padding:6px">
+    </a>
+    <p data-i18n="s01_scan" style="color:rgba(255,255,255,0.5);font-size:14px;margin:0">Scan to visit github.com/alibaba/neug</p>
   </div>
 </section>
 
@@ -992,6 +1008,428 @@ CALL LIF_GET_STATE() RETURN *;
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script>
+/* ── i18n translations ── */
+var _lang = 'en';
+var _t = {
+  en: {
+    /* S01 */ s01_org:'Alibaba · Tongyi Lab', s01_subtitle:'Making Graph Databases as Simple as SQLite',
+    s01_pill_os:'Open Source', s01_pill_em:'Embedded', s01_pill_hp:'High Performance',
+    s01_gh_btn:'Star on GitHub ⭐', s01_scan:'Scan to visit github.com/alibaba/neug',
+    s01_author:'Dr. Longbin Lai · April 2026',
+    /* S02 */ s02_h2:'The Problem',
+    s02_h3:'Graph databases are powerful — but heavy for research &amp; prototyping',
+    s02_trad:'Traditional workflow', s02_step1:'Deploy Server', s02_step2:'Config &amp; Auth',
+    s02_step3:'Network RTT', s02_step4:'Query',
+    s02_li1:'Separate server process with complex deployment',
+    s02_li2:'Network serialization on every query hop',
+    s02_li3:'Hard to embed in notebooks &amp; ML pipelines',
+    s02_li4:'Overkill for exploration and prototyping',
+    s02_want:'What we really want',
+    s02_callout:'<strong>SQLite</strong> made relational DBs trivial to embed.<br><strong>DuckDB</strong> did the same for analytics.<br><strong style="color:var(--blue)">NeuG</strong> brings that to <strong>graph data</strong>.',
+    /* S03 */ s03_h2:'Introducing <span class="g-blue">NeuG</span>',
+    s03_h3:'An embedded, high-performance graph database',
+    s03_f1t:'Zero Config', s03_f1d:'No server. Runs in-process.',
+    s03_f2t:'Sub-ms Latency', s03_f2d:'Direct memory access.',
+    s03_f3t:'Full Cypher', s03_f3d:'Paths, shortest path, subqueries.',
+    s03_f4t:'Dual Mode', s03_f4d:'Embedded ↔ Service, one line.',
+    /* S04 */ s04_h2:'Dual-Mode Architecture',
+    s04_h3:'One engine · two deployment models · switch with one line of code',
+    s04_em_t:'Embedded Mode', s04_em_d:'In-process, zero overhead. For data science, ML pipelines, prototyping.',
+    s04_sv_t:'Service Mode', s04_sv_d:'HTTP/RPC with MVCC. For web apps, real-time APIs, multi-user.',
+    s04_callout:'<strong>Same library, same data, same queries.</strong> Develop embedded → deploy as service. Zero migration.',
+    /* S05 */ s05_h2:'Getting Started', s05_h3:'Embedded and Service mode — side by side',
+    s05_em:'Embedded Mode', s05_sv:'Switch to Service — one line', s05_ext:'Extension System',
+    s05_ext_d:'Postgres/DuckDB-style extension model — keep the core lean, add capabilities on demand.',
+    /* S06 */ s06_h2:'Performance · <span class="g-blue">NeuG vs LadybugDB</span>',
+    s06_h3:'Embedded Mode · LSQB Benchmark · LDBC SNB SF1 (~3M nodes, ~17M edges) · Apple Silicon',
+    s06_won:'Queries Won', s06_max:'Max Speedup',
+    s06_callout:'<strong>NeuG single-thread</strong> beats LadybugDB (Kùzu) multi-thread on 8 of 9 queries. Powered by <strong>GOpt</strong> graph-native optimizer with cost-based pattern decomposition.',
+    /* S07 */ s07_h2:'Performance · <span class="g-blue">NeuG vs Neo4j</span>',
+    s07_h3:'Service Mode · LDBC SNB Interactive · 14 queries, 4 clients, 300 seconds',
+    s07_neug_lbl:'NeuG Service Mode', s07_neo_lbl:'Neo4j Server Mode', s07_thru:'throughput',
+    s07_note:'Built on GraphScope Flex — LDBC SNB world record: 80K+ QPS',
+    /* S08 */ s08_label:'Case Studies', s08_h1:'From Kernels to Connectomes',
+    s08_desc:'When graph analysis becomes as simple as loading a file,<br>the interesting part is no longer the tooling, but the questions you dare to ask.',
+    s08_c1:'Linux Kernel', s08_c2:'Open Source Health', s08_c3:'Fruit Fly Brain', s08_c4:'Exploratory BI',
+    /* S09 */ s09_h2:'Turn the Linux Kernel into a Queryable Graph',
+    s09_h3:'30M lines of C · 4,585 directories · one driving question: "how far can one change propagate?"',
+    s09_schema_t:'Graph Schema · 5 node types, 9 edge types',
+    s09_ed1:'static call site', s09_ed2:'directory path', s09_ed3:'git history',
+    s09_fn_l:'Functions', s09_ce_l:'Call Edges', s09_cm_l:'Commits',
+    s09_note:'Pre-built and shipped as a single NeuG database file (<code>linux_db.zip</code>) — download, unzip, query. No indexing, no rebuild.',
+    s09_callout:'<strong>The simplest question we can ask:</strong> "If I change one function\'s behavior, how many other functions might break — in the worst case?"',
+    s09_grep:'From <code>grep</code> to Cypher',
+    s09_step1:'① load the kernel — two lines:',
+    s09_step2:'② "which modules does everyone depend on?"',
+    s09_step3:'③ "3-hop blast radius of <code>free_irq</code>?"',
+    s09_footer:'Before: <code>grep</code> across 30M lines + manually trace wrappers. Days.<br>After: variable-length Cypher path. One query. One second.',
+    /* S10 */ s10_h2:'The Ripple Effect of One Function',
+    s10_h3:'Follow <code>free_irq</code> — the kernel\'s interrupt-release routine — outward, one hop at a time',
+    s10_shock:'The graph traces the shock wave',
+    s10_p1:'One <code>MATCH … CALLS*1..3</code> gives us what would otherwise take weeks of grep + code reading.',
+    s10_h0t:'<strong>Hop 0 · the source</strong>',
+    s10_h0d:'<code>free_irq</code> — releases an interrupt handler; every driver that claims IRQs must release them.',
+    s10_h1t:'<strong>Hop 1 · direct callers → 1,862</strong>',
+    s10_h1d:'SCSI, serial, sound, DMA, SPI, MMC drivers…',
+    s10_h2t:'<strong>Hop 2 · through wrappers</strong>',
+    s10_h2d:'<code>devm_free_irq</code>, <code>pci_free_irq</code> → dozens more NIC / GPU / audio drivers',
+    s10_h3t:'<strong>Hop 3 · <span style="color:var(--red)">1,390 functions</span></strong>',
+    s10_h3d:'Across <strong>562 modules</strong> — 12.3% of the entire kernel can feel the change.',
+    s10_callout:'<strong>This is why Linus and Greg KH guard core APIs so fiercely.</strong> "Break one thing, break the world" is not a metaphor — the graph measures it exactly.',
+    s10_walls:'Load-bearing walls of the kernel',
+    s10_walls_d:'<em>Pure service providers</em> — 12 modules where <code>inbound / (inbound + outbound) = 1.00</code>. They are called by everyone and call no one outside.',
+    s10_r1:'Device model', s10_r2:'Network core', s10_r3:'Scheduler',
+    s10_r4:'Interrupts', s10_r5:'PCI bus', s10_r6:'Time subsystem',
+    s10_hot:'The kernel\'s "hottest single function" is not <code>printk</code> — it\'s <code>dev_err_probe</code>, called at <strong>3,077</strong> sites. An error-handling function tops the chart: "device not found" happens more often than "device found". The graph tells us that, fast.',
+    /* S11 */ s11_h2:'Two Surprises the Graph Reveals',
+    s11_h3:'Things you would never see by reading the source tree top-down',
+    s11_s1_lbl:'Surprise #1', s11_s1_ttl:'The foundation is also the busiest construction site',
+    s11_s1_desc:'<code>mm/</code> — memory management — is the kernel\'s bedrock. Every page allocation, every VMA, every slab cache goes through it. Before <code>mm_core_init()</code> runs, even <code>kmalloc</code> doesn\'t exist.',
+    s11_m1:'of all kernel functions', s11_m2:'of hottest modified files',
+    s11_s1_clt:'<strong>The paradox:</strong> the code everyone depends on is also the code that changes the most.<br>Imagine renovating a skyscraper\'s foundation while people on floors 1–100 keep working — no downtime allowed.',
+    s11_s2_lbl:'Surprise #2', s11_s2_ttl:'A GPU driver is an operating system',
+    s11_s2_desc:'Think a GPU driver is "just another driver"? The graph says otherwise.',
+    s11_fn_h:'Functions',
+    s11_s2_desc2:'<code>amdgpu_device_init()</code> makes <strong>44 direct calls</strong> — just 7 short of <code>start_kernel()</code>\'s 51. Booting a single GPU is nearly as complex as booting Linux itself.',
+    s11_s2_clt:'<strong>Modern GPUs carry their own OS inside Linux</strong> — their own scheduler, memory manager, command processor, IPC. The kernel we call "Linux" is increasingly a federation of mini-OSes.',
+    /* S12 */ s12_h2:'Can Stars Tell You if a Community Is Alive?',
+    s12_h3:'Stars count "who walked by". Graphs reveal "who actually stayed and built together". 74 projects · 60 months · 6.74M comments.',
+    s12_ng:'Every month is a new graph',
+    s12_ga:'GitHub Archive events are replayed into three monthly graph snapshots per project:',
+    s12_gaa:'<em>collaboration graph G<sub>AA</sub> — who works with whom</em>',
+    s12_gar:'<em>contribution graph G<sub>AR</sub> — who flows across projects</em>',
+    s12_gad:'<em>discussion graph G<sub>AD</sub> — how people talk</em>',
+    s12_snap:'<strong>~4,000 monthly snapshots</strong> analyzed one-by-one in NeuG embedded — no server, no cluster, just a file per project.',
+    s12_ins:'<strong>Insight:</strong> Stars are a scalar. A community is a topology. You need graphs to tell them apart.',
+    s12_4d:'4 dimensions · 4 graph algorithms',
+    s12_d1t:'<span style="color:var(--blue)">🧠 Burnout Risk</span> — <em>is the core shrinking?</em>',
+    s12_d1d:'<strong>k-core decomposition</strong>: peel the collaboration graph layer-by-layer until only the tightest clique remains — that\'s the real core. Is it growing or losing members?',
+    s12_d2t:'<span style="color:var(--green)">🌱 Newcomer Friendliness</span> — <em>can a stranger reach the core?</em>',
+    s12_d2d:'<strong>BFS shortest path</strong> from new contributors to core maintainers. If the distance is ∞, the door is closed.',
+    s12_d3t:'<span style="color:var(--indigo)">💬 Atmosphere</span> — <em>is the tone healthy?</em>',
+    s12_d3d:'<strong>Clustering coefficient</strong> + ToxiCR sentiment on 6.74M comments. Are friends-of-friends also collaborating?',
+    s12_d4t:'<span style="color:var(--orange)">🌊 Talent Flow</span> — <em>is the pool growing?</em>',
+    s12_d4d:'YoY net flow of core contributors across the <strong>cross-project</strong> graph.',
+    /* S13 */ s13_h2:'165K Stars vs 73K Stars — and the Smaller One Is Healthier',
+    s13_h3:'Two LLM inference tools, same year, same audience — opposite community trajectories',
+    s13_ol_desc:'165K ⭐ · local LLM runner', s13_vl_desc:'73K ⭐ · enterprise inference',
+    s13_dim:'Dimension', s13_d_mh:'🧠 Maintainer health', s13_d_tf:'🌊 Talent flow',
+    s13_d_mau:'Monthly active users', s13_d_mau_ol:'1,128 → 150 (↓87%)', s13_d_mau_vl:'rising to 12,614',
+    s13_d_cd:'Core developers', s13_d_cd_ol:'102 → 13 at nadir', s13_d_cd_vl:'15–30, 4 yrs stable',
+    s13_d_ntf:'2026 net talent flow', s13_d_ntf_vl:'still positive',
+    s13_callout:'<strong>Stars measure popularity. The graph measures who stays.</strong> Ollama\'s onboarding funnel is wide but the bottom is leaking — 102 core contributors have fallen to 24, and the k-core is shrinking every quarter.',
+    s13_3l_t:'Three-layer AI stratification',
+    s13_3l_d:'The closer a project sits to infrastructure, the more resilient its collaboration graph. The closer it sits to "model release", the faster the topology hollows out.',
+    s13_inf:'Infrastructure', s13_app:'Application layer', s13_rel:'Model release',
+    s13_top:'<strong>Top 5 healthiest:</strong> OpenClaw (92) · PyTorch (81) · Go (80) · Elasticsearch (79) · Node.js (78). <strong>Bottom 5:</strong> all LLM release repos. A model release page is not a community.',
+    /* S14 */ s14_h2:'When a Community Hollows Out: Three Snapshots',
+    s14_h3:'Stable Diffusion WebUI — the topology collapsed long before anyone stopped talking',
+    s14_sd_t:'SD WebUI — three graphs, three diagnoses',
+    s14_snap_h:'Snapshot', s14_snap_cc:'Clustering coef.', s14_snap_bf:'Bus factor',
+    s14_s1:'2022-10 · peak', s14_s2:'2024-06 · fading', s14_s3:'2025-10 · near-dead',
+    s14_what:'<strong>What each number means:</strong>',
+    s14_li1:'<strong>Clustering coefficient</strong> ↓ from 0.66 to 0.08: friends-of-friends no longer collaborate — the community stopped being a network and became a fan-out.',
+    s14_li2:'<strong>Toxicity</strong> ↑ 8×: ToxiCR scan of every PR / Issue comment — the remaining few are arguing.',
+    s14_li3:'<strong>Bus factor = 1</strong>: a single maintainer carries the project. k-core decomposition peels everything else away.',
+    s14_callout:'<strong>Only the graph catches this early.</strong> In 2023 the Stars chart still looked great — but the collaboration topology had already hollowed out.',
+    s14_lc_t:'LangChain vs AutoGen — parallel collapse',
+    s14_lc_d:'Two AI-orchestration frameworks — different scale, same fate curve.',
+    s14_pk:'Peak MAU', s14_25:'2025-12 MAU', s14_mh:'Maintainer health', s14_tf:'2024 net talent flow',
+    s14_twin:'<strong>The −14.4% / −14.5% twin:</strong> not coincidence. AI orchestration frameworks sit on top of fast-moving model APIs. When the models iterate, the middleware layer loses its moat — and the talent-flow graph shows simultaneous outflow across <em>all</em> projects in the band.',
+    s14_sig:'<strong>Graph signature of "false prosperity":</strong><br>high event volume · low clustering coefficient · shrinking k-core · toxicity rising.',
+    s14_note:'Next.js (13K Star) has a toxicity of <strong>17.68%</strong>, #73 in atmosphere. DuckDB has toxicity 0.0%, atmosphere 100. Quality is not size.',
+    /* S15 */ s15_h2:'Has Your Database Ever Held a Brain?',
+    s15_h3:'FlyWire (Nature 2024) released the first complete insect connectome. We loaded it into NeuG — and let it think.',
+    s15_n:'Neurons (nodes)', s15_c:'Connections (edges)', s15_s:'Synapse weight',
+    s15_imp:'The graph is so naturally the right representation here that the import is almost trivial:',
+    s15_sci:'<strong>Scientific surprise baked into the data:</strong> in <em>Drosophila</em>, glutamate (GLUT) is <em>inhibitory</em> (via GluCl channels) — unlike mammals where it\'s excitatory. A one-line property encoded correctly in the schema.',
+    s15_csr_t:'Why CSR storage wins here',
+    s15_csr_d:'Neural simulation = spike propagation = <em>visit every neighbor</em>, millions of times. Storage layout decides feasibility.',
+    s15_dense_t:'Dense matrix: 139K × 139K', s15_dense_d:'≈ 19 billion cells of zeros. Out-of-memory on a laptop.',
+    s15_csr_t2:'NeuG CSR: only the 2.7M real edges',
+    s15_csr_d2:'Neighbors of a neuron sit in <em>contiguous memory</em>. Lookup is <code>O(out_degree)</code>, not <code>O(N)</code>. Orders of magnitude faster.',
+    s15_ext_t:'Extension framework — the secret sauce',
+    s15_ext_d:'We wrote a 300-line C++ extension <code>lif_sim</code> that reads CSR directly — no data movement, no serialization — and invoke it from Cypher:',
+    s15_ext_n:'Same pattern as Postgres extensions — core stays lean, capabilities extend on demand.',
+    /* S16 */ s16_h2:'Make the Brain Think — in Four Cypher Calls',
+    s16_h3:'Give the fly a taste of sugar, then watch a spike wave ripple through 10,000 neurons',
+    s16_s1:'① Find the sensory neurons', s16_s2:'② Inject stimulus',
+    s16_s3:'③ Run the simulation', s16_s4:'④ Read the result — right in Cypher',
+    s16_wave:'The spike wave, round by round',
+    s16_wave_d:'20 sensory neurons stimulated → <strong>10,295</strong> spiked. A <strong>514×</strong> amplification.',
+    s16_r0:'Round 0', s16_r2:'Round 2', s16_r4:'Round 4', s16_r6:'Round 6',
+    s16_r7:'Round 7 ←', s16_r10:'Round 10', s16_r20:'Round 20',
+    s16_callout:'<strong>Every round is a CSR neighbor walk.</strong> The whole simulation runs inside NeuG — no Python loop, no data copy. 139K neurons × 20 rounds completes in seconds.',
+    /* S17 */ s17_h2:'The Database Predicted "The Fly Wants to Eat"',
+    s17_h3:'Same brain, two tastes — the graph tells sugar from bitter by watching which motor neurons fire',
+    s17_act:'neurons activated',
+    s17_zoom:'Total spiking count is almost identical. But <em>which</em> neurons fire — that\'s where the answer lives. Zoom into the 110 motor neurons:',
+    s17_mh:'Motor-neuron type', s17_feed:'(feeding)',
+    s17_callout:'<strong>ingestion_motor_neuron fires 3× more under sugar.</strong> "Sugar → feed" — the behavioral prediction is right there, written in spike counts. All from one stored graph and one Cypher command.',
+    s17_disc:'Honest disclaimer: this is technical demonstration, not precision behavior prediction (no MN9 annotation, no firing-rate calibration). But the framework is ready — when the next connectome (mouse, zebrafish) arrives, NeuG is waiting.',
+    /* S18 */ s18_h2:'One Question Leads to Four — Why That Used to Be Impossible',
+    s18_h3:'OpenAIRE · 22M entities · 94M relations · one question about war · and a ladder of follow-ups',
+    s18_schema:'The graph schema', s18_ent:'entities', s18_rel:'relationships',
+    s18_q:'"How did the Russia-Ukraine conflict affect Russian academia?"',
+    s18_trad:'<strong>Traditional BI:</strong> each follow-up = redesign schema → rebuild wide table → rerun.<br>Cost of Q2, Q3, Q4 = Q1 × 3. Most analyses stop at Q1.',
+    s18_neug:'<strong>NeuG:</strong> each step is <code>Source → Join → View</code> on the same hypergraph. Intermediate results are materialized — Q4 doesn\'t rescan 94M edges.',
+    s18_four:'Four steps, each reusing the last',
+    s18_q1t:'Q1 · Publication volume?',
+    s18_q1d:'Match <code>Pub ↔ Org</code>, group by country × year → Russia <strong>−50.9%</strong> (2020–2024). Global total rose. Not a worldwide trend.',
+    s18_q2t:'Q2 · Funding cut? <small style="color:var(--g3);font-weight:400">joins Funding to Q1\'s backbone</small>',
+    s18_q2d:'EU Commission stopped funding Russian orgs <strong>completely</strong>. 26 Ukrainian orgs still funded. Matches the official announcement.',
+    s18_q3t:'Q3 · Journal exclusion? <small style="color:var(--g3);font-weight:400">adds Publisher dimension</small>',
+    s18_q3d:'EDP Sciences cut Russian submissions selectively — other countries unchanged. Not a contraction, a choice.',
+    s18_q4t:'Q4 · Collaboration network? <small style="color:var(--g3);font-weight:400">walks Author→Pub→Org cross-country</small>',
+    s18_q4d:'Biggest drop by partner country, 2021→2024 → <strong>Turkey −98.4%</strong>. Wait — Turkey?',
+    /* S19 */ s19_h2:'The Turkey Shock',
+    s19_h3:'If sanctions caused the drop, sanctioned countries should drop the most. They don\'t.',
+    s19_title:'Russian co-authorship with partner countries (2021 → 2024)',
+    s19_ns:'(no sanctions)', s19_s:'(sanctioned)',
+    s19_clt1:'<strong>The obvious hypothesis — "sanctions caused it" — breaks.</strong> Turkey didn\'t sanction Russia, yet collaboration with Turkey fell the hardest.',
+    s19_clt2:'What the graph reveals is <strong>systemic marginalization</strong>: Russia is being <em>structurally disconnected</em> from the global academic network — not because of policy, but because the entire topology reshaped around it.',
+    s19_why:'Why this is hard without NeuG',
+    s19_hg_t:'Hypergraph model', s19_hg_d:'Schema grows with each question. Q4 added "partner country" without rebuilding anything — just one more <code>Join</code> on the existing view.',
+    s19_ub_t:'Unbiased sampling', s19_ub_d:'On 94M edges, exhaustive subgraph matching is infeasible. NeuG uniformly samples matches — <strong>COUNT error 0.27%, MAX near zero</strong>. Trend judgments stay correct; cost drops 10-100×.',
+    s19_is_t:'In-situ computation', s19_is_d:'NeuG runs the sampling kernel directly inside the storage engine — no ETL to another system. On LDBC SNB SF10 it ran all 13 queries (Neo4j 7/13, MySQL 2/13). <strong>16× vs Neo4j</strong>, <strong>47× vs MySQL</strong>.',
+    s19_paper:'Paper: <em>"A Hypergraph-Based Framework for Exploratory Business Intelligence"</em> · arXiv:2603.10625',
+    /* S20 */ s20_h2:'Why NeuG Matters', s20_sf:'NeuG = Simple + Fast',
+    s20_li1:'<code>pip install neug</code> — zero config, in-process',
+    s20_li2:'Full Cypher with GOpt graph-native optimizer',
+    s20_li3:'<strong>287×</strong> vs LadybugDB · <strong>50.6×</strong> vs Neo4j',
+    s20_li4:'Embedded ↔ Service with <code>db.serve()</code>',
+    s20_li5:'Extension framework for custom computation',
+    s20_rm:'Roadmap', s20_rm1:'Node.js bindings — AI Agent integration',
+    s20_rm2:'Graph algorithms — Leiden, PageRank, K-Core',
+    s20_rm3:'Data lake — S3/OSS + Parquet + GraphAr',
+    s20_rm4:'Vector extensions — RAG &amp; GraphRAG',
+    s20_4d:'Four domains, one pattern: the graph reveals what counting can\'t',
+    s20_i1:'<strong>Linux:</strong> <code>free_irq</code> → 3 hops → 1,390 functions shaken. mm/ is 0.8% of code yet 35% of hottest files. A GPU driver is bigger than mm/.',
+    s20_i2:'<strong>GitHub:</strong> Ollama (165K⭐) ranks #68, vLLM (73K⭐) ranks #7. Clustering coefficient catches a dying community before the Star chart notices.',
+    s20_i3:'<strong>Fly brain:</strong> 20 sugar neurons → 10,295 spikes → ingestion-motor fires 3× more. CSR traversal + a 300-line extension. The database predicts behavior.',
+    s20_i4:'<strong>Academia:</strong> four questions, each reused the last. The biggest collaboration drop is Turkey (no sanctions) — only the graph could surface that.',
+    s20_star:'Star on GitHub ⭐',
+    /* S21 */ s21_h1:'Thank You', s21_p:'Questions &amp; Discussion',
+    s21_gh:'GitHub', s21_inst:'Install', s21_docs:'Docs'
+  },
+  zh: {
+    /* S01 */ s01_org:'Alibaba · 通义实验室', s01_subtitle:'让图数据库像 SQLite 一样简单',
+    s01_pill_os:'开源', s01_pill_em:'嵌入式', s01_pill_hp:'高性能',
+    s01_gh_btn:'GitHub 点星 ⭐', s01_scan:'扫码访问 github.com/alibaba/neug',
+    s01_author:'赖龙彬博士 · 2026 年 4 月',
+    /* S02 */ s02_h2:'痛点',
+    s02_h3:'图数据库功能强大——但对科研和原型开发来说太重了',
+    s02_trad:'传统工作流', s02_step1:'部署服务器', s02_step2:'配置认证',
+    s02_step3:'网络往返', s02_step4:'查询',
+    s02_li1:'独立服务进程，部署复杂',
+    s02_li2:'每次查询都有网络序列化开销',
+    s02_li3:'难以嵌入 notebook 和 ML 流水线',
+    s02_li4:'对探索和原型开发来说过于繁重',
+    s02_want:'我们真正想要的',
+    s02_callout:'<strong>SQLite</strong> 让关系型数据库轻松嵌入。<br><strong>DuckDB</strong> 对分析数据库做了同样的事。<br><strong style="color:var(--blue)">NeuG</strong> 要为<strong>图数据</strong>做这件事。',
+    /* S03 */ s03_h2:'认识 <span class="g-blue">NeuG</span>',
+    s03_h3:'一款嵌入式高性能图数据库',
+    s03_f1t:'零配置', s03_f1d:'无需服务器，进程内运行',
+    s03_f2t:'亚毫秒延迟', s03_f2d:'直接内存访问',
+    s03_f3t:'完整 Cypher', s03_f3d:'路径、最短路、子查询',
+    s03_f4t:'双模式', s03_f4d:'嵌入式 ↔ 服务模式，一行切换',
+    /* S04 */ s04_h2:'双模式架构',
+    s04_h3:'同一引擎 · 两种部署模式 · 一行代码切换',
+    s04_em_t:'嵌入式模式', s04_em_d:'进程内运行，零开销。适合数据科学、ML 流水线、原型验证。',
+    s04_sv_t:'服务模式', s04_sv_d:'HTTP/RPC + MVCC。适合 Web 应用、实时 API、多用户场景。',
+    s04_callout:'<strong>同一库、同一数据、同一套查询。</strong>嵌入式开发，一键切换服务部署，零迁移成本。',
+    /* S05 */ s05_h2:'快速上手', s05_h3:'嵌入式与服务模式——对比一览',
+    s05_em:'嵌入式模式', s05_sv:'切换到服务模式——一行代码', s05_ext:'扩展系统',
+    s05_ext_d:'Postgres/DuckDB 风格的扩展模型——核心精简，能力按需加载。',
+    /* S06 */ s06_h2:'性能 · <span class="g-blue">NeuG vs LadybugDB</span>',
+    s06_h3:'嵌入式模式 · LSQB Benchmark · LDBC SNB SF1（~300 万节点，~1700 万边）· Apple Silicon',
+    s06_won:'查询胜出', s06_max:'最大加速',
+    s06_callout:'<strong>NeuG 单线程</strong>在 9 个查询中 8 个胜过 LadybugDB（Kùzu）多线程。背后是 <strong>GOpt</strong> 图原生优化器的代价驱动模式分解。',
+    /* S07 */ s07_h2:'性能 · <span class="g-blue">NeuG vs Neo4j</span>',
+    s07_h3:'服务模式 · LDBC SNB Interactive · 14 查询，4 客户端，300 秒',
+    s07_neug_lbl:'NeuG 服务模式', s07_neo_lbl:'Neo4j 服务模式', s07_thru:'吞吐量',
+    s07_note:'基于 GraphScope Flex — LDBC SNB 世界纪录：80K+ QPS',
+    /* S08 */ s08_label:'案例研究', s08_h1:'从内核到连接组',
+    s08_desc:'当图分析像加载一个文件一样简单，<br>最有意思的不再是工具，而是你敢提的那些问题。',
+    s08_c1:'Linux 内核', s08_c2:'开源健康度', s08_c3:'果蝇大脑', s08_c4:'探索式 BI',
+    /* S09 */ s09_h2:'把 Linux 内核变成一张可查询的图',
+    s09_h3:'3000 万行 C 代码 · 4585 个目录 · 一个核心问题：「一处改动最远能波及多远？」',
+    s09_schema_t:'图模型 · 5 种节点，9 种边',
+    s09_ed1:'静态调用', s09_ed2:'目录路径', s09_ed3:'Git 历史',
+    s09_fn_l:'函数', s09_ce_l:'调用边', s09_cm_l:'提交',
+    s09_note:'预构建为单一 NeuG 数据库文件（<code>linux_db.zip</code>）——下载、解压、即查。无需建索引，无需重建。',
+    s09_callout:'<strong>最简单的问题：</strong>「改动一个函数的行为，最坏情况下会有多少函数跟着出问题？」',
+    s09_grep:'从 <code>grep</code> 到 Cypher',
+    s09_step1:'① 两行代码加载内核：',
+    s09_step2:'② 「哪些模块被所有人依赖？」',
+    s09_step3:'③ 「<code>free_irq</code> 的 3 跳影响范围？」',
+    s09_footer:'之前：在 3000 万行代码里 grep + 手动追踪 wrapper，几天时间。<br>之后：变长 Cypher 路径，一条查询，一秒出结果。',
+    /* S10 */ s10_h2:'一个函数的涟漪效应',
+    s10_h3:'跟随 <code>free_irq</code>——内核的中断释放接口——一跳一跳往外追',
+    s10_shock:'图追踪冲击波',
+    s10_p1:'一条 <code>MATCH … CALLS*1..3</code> 查询，替代了原本需要数周 grep + 代码阅读的工作。',
+    s10_h0t:'<strong>第 0 跳 · 起点</strong>',
+    s10_h0d:'<code>free_irq</code> — 释放中断处理器；每个申请了 IRQ 的驱动，在卸载或出错时都必须调用它。',
+    s10_h1t:'<strong>第 1 跳 · 直接调用者 → 1,862</strong>',
+    s10_h1d:'SCSI、串口、声卡、DMA、SPI、MMC 驱动……',
+    s10_h2t:'<strong>第 2 跳 · 经过 wrapper</strong>',
+    s10_h2d:'<code>devm_free_irq</code>、<code>pci_free_irq</code> → 再波及几十个网卡 / GPU / 音频驱动',
+    s10_h3t:'<strong>第 3 跳 · <span style="color:var(--red)">1,390 个函数</span></strong>',
+    s10_h3d:'横跨 <strong>562 个模块</strong>——整个内核 12.3% 的范围都能感受到这次改动。',
+    s10_callout:'<strong>这就是 Linus 和 Greg KH 对核心 API 如此保守的原因。</strong>「动一发而牵全身」不是比喻——图数据库把它精确量化了。',
+    s10_walls:'内核的「承重墙」',
+    s10_walls_d:'<em>纯服务提供方</em> —— 比例值 = 1.00 的 12 个模块。它们被所有人调用，却不依赖任何外部模块。',
+    s10_r1:'设备模型', s10_r2:'网络核心', s10_r3:'调度器',
+    s10_r4:'中断', s10_r5:'PCI 总线', s10_r6:'时间子系统',
+    s10_hot:'内核「最热函数」不是 <code>printk</code>，而是 <code>dev_err_probe</code>，被调用 <strong>3,077</strong> 次。一个错误处理函数排第一：说明驱动探测阶段「找不到设备」比「找到设备」发生得更频繁。图数据库几秒钟就告诉我们这件事。',
+    /* S11 */ s11_h2:'图揭示的两个意外',
+    s11_h3:'从上往下读代码永远看不到的东西',
+    s11_s1_lbl:'意外 #1', s11_s1_ttl:'地基同时是最繁忙的施工现场',
+    s11_s1_desc:'<code>mm/</code>——内存管理——是内核的基石。每次 page 分配、每个 VMA、每个 slab 缓存，都要走它。<code>mm_core_init()</code> 跑起来之前，连 <code>kmalloc</code> 都不存在。',
+    s11_m1:'的内核函数', s11_m2:'的热点修改文件',
+    s11_s1_clt:'<strong>悖论：</strong>最被依赖的代码，也是改动最频繁的代码。<br>想象一下：大楼 1 到 100 层的人还在上班，你却要翻新地基——停工不允许。',
+    s11_s2_lbl:'意外 #2', s11_s2_ttl:'GPU 驱动其实是一个操作系统',
+    s11_s2_desc:'以为 GPU 驱动不过是「一个普通驱动」？图数据库给出了不同的答案。',
+    s11_fn_h:'函数数',
+    s11_s2_desc2:'<code>amdgpu_device_init()</code> 进行 <strong>44 次直接调用</strong>——只比 <code>start_kernel()</code> 的 51 次少 7 个。初始化一张 GPU，复杂度已接近启动整个 Linux。',
+    s11_s2_clt:'<strong>现代 GPU 在 Linux 内核里携带着自己的操作系统</strong>——自己的调度器、内存管理、命令处理器、IPC。我们称之为「Linux」的内核，越来越像是一个迷你 OS 的联邦。',
+    /* S12 */ s12_h2:'Star 数能告诉你社区是否还活着吗？',
+    s12_h3:'Star 计算的是「谁路过」，图揭示的是「谁真正留下来一起做事」。74 个项目 · 60 个月 · 674 万条评论。',
+    s12_ng:'每个月都是一张新图',
+    s12_ga:'每个项目每月生成三张图快照：',
+    s12_gaa:'<em>协作图 G<sub>AA</sub> —— 谁和谁一起做事</em>',
+    s12_gar:'<em>贡献图 G<sub>AR</sub> —— 谁在跨项目流动</em>',
+    s12_gad:'<em>讨论图 G<sub>AD</sub> —— 大家怎么说话</em>',
+    s12_snap:'<strong>约 4000 张月度快照</strong>，全部在 NeuG 嵌入式模式下逐一分析——无需服务器，无需集群，每个项目一个文件。',
+    s12_ins:'<strong>核心洞见：</strong>Star 是一个标量，社区是一个拓扑。你需要图才能分清两者。',
+    s12_4d:'4 个维度 · 4 种图算法',
+    s12_d1t:'<span style="color:var(--blue)">🧠 倦怠风险</span> — <em>核心圈在缩小吗？</em>',
+    s12_d1d:'<strong>k-core 分解</strong>：像剥洋葱一样逐层剥去协作图，直到剩下最紧密的圈子——那才是真正的核心。它在增长还是在萎缩？',
+    s12_d2t:'<span style="color:var(--green)">🌱 新人友好度</span> — <em>陌生人能到达核心吗？</em>',
+    s12_d2d:'<strong>BFS 最短路径</strong>：从新贡献者到核心维护者的距离。如果距离是 ∞，说明大门已经关上了。',
+    s12_d3t:'<span style="color:var(--indigo)">💬 社区氛围</span> — <em>交流氛围健康吗？</em>',
+    s12_d3d:'<strong>聚类系数</strong> + ToxiCR 对 674 万条评论做情感分析。朋友的朋友是否也在协作？',
+    s12_d4t:'<span style="color:var(--orange)">🌊 人才流动</span> — <em>人才池在增长吗？</em>',
+    s12_d4d:'核心贡献者在<strong>跨项目</strong>图中的逐年净流入 / 流出。',
+    /* S13 */ s13_h2:'16.5 万 Star vs 7.3 万 Star——Star 少的那个更健康',
+    s13_h3:'两个 LLM 推理工具，同一年，同类受众——社区走向截然相反',
+    s13_ol_desc:'165K ⭐ · 本地 LLM 推理', s13_vl_desc:'73K ⭐ · 企业级推理',
+    s13_dim:'维度', s13_d_mh:'🧠 维护者健康度', s13_d_tf:'🌊 人才流动',
+    s13_d_mau:'月活跃用户', s13_d_mau_ol:'1,128 → 150 (↓87%)', s13_d_mau_vl:'持续增长至 12,614',
+    s13_d_cd:'核心开发者', s13_d_cd_ol:'102 → 最低降至 13', s13_d_cd_vl:'15-30 人，4 年稳定',
+    s13_d_ntf:'2026 年人才净流动', s13_d_ntf_vl:'仍为正',
+    s13_callout:'<strong>Star 衡量的是知名度，图衡量的是谁在坚持。</strong>Ollama 的漏斗入口很宽，但底部在漏水——核心贡献者从 102 掉到 24，k-core 每季度都在缩小。',
+    s13_3l_t:'AI 生态三层分化',
+    s13_3l_d:'越靠近基础设施层，协作图越有韧性。越靠近「模型发布」层，拓扑空心化越快。',
+    s13_inf:'基础设施', s13_app:'应用层', s13_rel:'模型发布',
+    s13_top:'<strong>最健康 Top 5：</strong>OpenClaw (92) · PyTorch (81) · Go (80) · Elasticsearch (79) · Node.js (78)。<strong>最后 5 名：</strong>全部是大模型发布仓库。模型发布页不是社区。',
+    /* S14 */ s14_h2:'一个社区的凋零：三张图快照',
+    s14_h3:'Stable Diffusion WebUI——拓扑崩溃发生在所有人停止发言之前',
+    s14_sd_t:'SD WebUI——三张图，三次诊断',
+    s14_snap_h:'快照', s14_snap_cc:'聚类系数', s14_snap_bf:'Bus factor',
+    s14_s1:'2022-10 · 巅峰', s14_s2:'2024-06 · 衰退', s14_s3:'2025-10 · 接近停滞',
+    s14_what:'<strong>每个数字的含义：</strong>',
+    s14_li1:'<strong>聚类系数</strong>从 0.66 降到 0.08：朋友的朋友不再一起做事——社区从网络退化成扇形。',
+    s14_li2:'<strong>毒性</strong>上升 8 倍：ToxiCR 扫描每条 PR/Issue 评论——剩余的少数人在吵架。',
+    s14_li3:'<strong>Bus factor = 1</strong>：只剩一个维护者扛着项目。k-core 分解把其余所有人都剥离掉了。',
+    s14_callout:'<strong>只有图能提前发现这一点。</strong>2023 年的 Star 曲线看起来还很好看——但协作拓扑早已空心化。',
+    s14_lc_t:'LangChain vs AutoGen——平行衰退',
+    s14_lc_d:'两个 AI 编排框架——规模不同，命运曲线相同。',
+    s14_pk:'月活峰值', s14_25:'2025-12 月活', s14_mh:'维护者健康度', s14_tf:'2024 年人才净流动',
+    s14_twin:'<strong>−14.4% / −14.5% 的孪生数字：</strong>不是巧合。AI 编排框架建立在快速迭代的模型 API 之上。模型一更新，中间件层就失去了护城河——人才流动图同时显示出这一层所有项目的集体外流。',
+    s14_sig:'<strong>「虚假繁荣」的图特征：</strong><br>高事件量 · 低聚类系数 · k-core 萎缩 · 毒性上升。',
+    s14_note:'Next.js（13K Star）毒性率 <strong>17.68%</strong>，氛围排名第 73。DuckDB 毒性率 0.0%，氛围满分。质量不等于规模。',
+    /* S15 */ s15_h2:'你的数据库装过一颗大脑吗？',
+    s15_h3:'FlyWire（Nature 2024）发布了人类史上第一个完整昆虫连接组。我们把它装进 NeuG——然后让它「思考」。',
+    s15_n:'神经元（节点）', s15_c:'连接（边）', s15_s:'突触权重',
+    s15_imp:'图是这里最自然的表示——导入过程几乎不费力：',
+    s15_sci:'<strong>数据里藏着的科学惊喜：</strong>在果蝇中，谷氨酸（GLUT）是<em>抑制性</em>神经递质（通过 GluCl 通道）——与哺乳动物相反。一行属性，正确编码了这个发现。',
+    s15_csr_t:'为什么 CSR 存储在这里至关重要',
+    s15_csr_d:'神经仿真 = spike 传播 = <em>访问每个邻居</em>，数百万次。存储布局决定了可行性。',
+    s15_dense_t:'稠密矩阵：139K × 139K', s15_dense_d:'≈ 190 亿个格子，全是零。笔记本内存根本装不下。',
+    s15_csr_t2:'NeuG CSR：只存 270 万条真实边',
+    s15_csr_d2:'神经元的邻居在<em>连续内存</em>中排列。查找复杂度是 <code>O(out_degree)</code> 而不是 <code>O(N)</code>，快了好几个数量级。',
+    s15_ext_t:'扩展机制——秘密武器',
+    s15_ext_d:'我们写了一个 300 行 C++ 扩展 <code>lif_sim</code>，直接读取 CSR——不搬数据，不序列化——然后用 Cypher 调用：',
+    s15_ext_n:'和 Postgres 扩展机制相同——核心保持精简，能力按需扩展。',
+    /* S16 */ s16_h2:'四行 Cypher 让大脑思考',
+    s16_h3:'给果蝇喂一口糖，然后看 spike 波浪在 1 万个神经元间传播',
+    s16_s1:'① 找到感受神经元', s16_s2:'② 注入刺激',
+    s16_s3:'③ 运行仿真', s16_s4:'④ 读取结果——直接在 Cypher 里',
+    s16_wave:'spike 波浪，逐轮展开',
+    s16_wave_d:'20 个感受神经元被刺激 → <strong>10,295</strong> 个 spike。<strong>514 倍</strong>的放大。',
+    s16_r0:'第 0 轮', s16_r2:'第 2 轮', s16_r4:'第 4 轮', s16_r6:'第 6 轮',
+    s16_r7:'第 7 轮 ←', s16_r10:'第 10 轮', s16_r20:'第 20 轮',
+    s16_callout:'<strong>每一轮都是一次 CSR 邻居遍历。</strong>整个仿真在 NeuG 内部运行——没有 Python 循环，没有数据拷贝。139K 个神经元 × 20 轮，几秒钟完成。',
+    /* S17 */ s17_h2:'数据库预测「这只苍蝇想吃东西」',
+    s17_h3:'同一颗脑，两种味道——图通过观察哪些运动神经元激活来区分甜苦',
+    s17_act:'神经元激活',
+    s17_zoom:'总激活数几乎一样。但<em>哪些</em>神经元在激活——答案就在这里。放大到 110 个运动神经元：',
+    s17_mh:'运动神经元类型', s17_feed:'（进食）',
+    s17_callout:'<strong>ingestion_motor_neuron 在甜味下激活 3 倍。</strong>「糖 → 进食」——行为预测就写在 spike 计数里。只需一张持久化的图和一行 Cypher。',
+    s17_disc:'诚实声明：这是技术演示，不是精准行为预测（没有 MN9 标注，没有放电频率校准）。但框架已就绪——当下一个连接组数据（小鼠、斑马鱼）到来时，NeuG 已经准备好了。',
+    /* S18 */ s18_h2:'一个问题引出四个——为什么这在以前做不到',
+    s18_h3:'OpenAIRE · 2200 万实体 · 9400 万关系 · 一个关于战争的问题 · 以及一串追问',
+    s18_schema:'图模型', s18_ent:'实体', s18_rel:'关系',
+    s18_q:'「俄乌冲突对俄罗斯学术产生了什么影响？」',
+    s18_trad:'<strong>传统 BI：</strong>每次追问 = 重新设计 schema → 重建宽表 → 重跑查询。<br>Q2、Q3、Q4 的代价各等于一次 Q1。大多数分析止步于第一层。',
+    s18_neug:'<strong>NeuG：</strong>每步都是在同一张超图上做 <code>Source → Join → View</code>。中间结果被物化——Q4 不需要重扫 9400 万条边。',
+    s18_four:'四步追问，每步复用上一步',
+    s18_q1t:'Q1 · 论文数量变了吗？',
+    s18_q1d:'匹配 <code>Pub ↔ Org</code>，按国家×年份聚合 → 俄罗斯 <strong>−50.9%</strong>（2020-2024）。全球总量在涨，不是全球趋势。',
+    s18_q2t:'Q2 · 经费断了吗？<small style="color:var(--g3);font-weight:400">在 Q1 的 Pub-Org 骨架上 join Funding</small>',
+    s18_q2d:'欧盟委员会对俄罗斯机构的资助<strong>完全停止</strong>。26 家乌克兰机构仍在获资。与官方公告完全吻合。',
+    s18_q3t:'Q3 · 期刊排挤了吗？<small style="color:var(--g3);font-weight:400">加入 Publisher 维度</small>',
+    s18_q3d:'EDP Sciences 选择性减少了俄罗斯来稿——其他国家无变化。不是收缩，是选择。',
+    s18_q4t:'Q4 · 合作网络断了多少？<small style="color:var(--g3);font-weight:400">走 Author→Pub→Org 跨国路径</small>',
+    s18_q4d:'按伙伴国家统计降幅，2021→2024 → <strong>土耳其 −98.4%</strong>。等等——土耳其？',
+    /* S19 */ s19_h2:'土耳其冲击',
+    s19_h3:'如果制裁是原因，受制裁国家应该降幅最大。但事实并非如此。',
+    s19_title:'俄罗斯与各国的合作变化（2021 → 2024）',
+    s19_ns:'（无制裁）', s19_s:'（有制裁）',
+    s19_clt1:'<strong>最直觉的假设——「制裁造成的」——不成立。</strong>土耳其没有制裁俄罗斯，但与土耳其的合作降幅最大。',
+    s19_clt2:'图揭示的是<strong>系统性边缘化</strong>：俄罗斯正在被<em>结构性地切断</em>于全球学术网络——不是因为政策，而是因为整个拓扑都在它周围重塑了。',
+    s19_why:'为什么没有 NeuG 很难做到',
+    s19_hg_t:'超图模型', s19_hg_d:'Schema 随问题生长。Q4 加入「伙伴国」维度不需要重建任何东西——只是在现有 view 上多一个 <code>Join</code>。',
+    s19_ub_t:'无偏采样', s19_ub_d:'在 9400 万条边上全量子图匹配代价过大。NeuG 均匀采样匹配结果——<strong>COUNT 误差 0.27%，MAX 误差接近零</strong>。趋势判断准确，代价降低 10-100 倍。',
+    s19_is_t:'原位计算', s19_is_d:'NeuG 直接在存储引擎内部运行采样算法——无需 ETL 到其他系统。在 LDBC SNB SF10 上跑完全部 13 个查询（Neo4j 7/13，MySQL 2/13）。<strong>16× vs Neo4j</strong>，<strong>47× vs MySQL</strong>。',
+    s19_paper:'论文：<em>《A Hypergraph-Based Framework for Exploratory Business Intelligence》</em> · arXiv:2603.10625',
+    /* S20 */ s20_h2:'为什么 NeuG 重要', s20_sf:'NeuG = 简单 + 快速',
+    s20_li1:'<code>pip install neug</code> — 零配置，进程内运行',
+    s20_li2:'完整 Cypher + GOpt 图原生优化器',
+    s20_li3:'<strong>287×</strong> vs LadybugDB · <strong>50.6×</strong> vs Neo4j',
+    s20_li4:'嵌入式 ↔ 服务模式，<code>db.serve()</code> 一行切换',
+    s20_li5:'扩展框架支持自定义计算',
+    s20_rm:'路线图', s20_rm1:'Node.js 绑定 — AI Agent 集成',
+    s20_rm2:'图算法 — Leiden、PageRank、K-Core',
+    s20_rm3:'数据湖 — S3/OSS + Parquet + GraphAr',
+    s20_rm4:'向量扩展 — RAG 和 GraphRAG',
+    s20_4d:'四个领域，同一个规律：图能看到数字看不到的东西',
+    s20_i1:'<strong>Linux：</strong><code>free_irq</code> → 3 跳 → 1,390 个函数震动。mm/ 占 0.8% 代码，却贡献 35% 热点文件。GPU 驱动比 mm/ 还大。',
+    s20_i2:'<strong>GitHub：</strong>Ollama (165K⭐) 排 #68，vLLM (73K⭐) 排 #7。聚类系数在 Star 图表察觉之前就已捕捉到社区的死亡。',
+    s20_i3:'<strong>果蝇脑：</strong>20 个糖味神经元 → 10,295 次 spike → 进食运动神经元激活 3 倍。CSR 遍历 + 300 行扩展。数据库预测了行为。',
+    s20_i4:'<strong>学术界：</strong>四步追问，每步复用上一步。最大合作降幅来自土耳其（无制裁）——只有图能发现这一点。',
+    s20_star:'GitHub 点星 ⭐',
+    /* S21 */ s21_h1:'谢谢大家', s21_p:'提问与讨论',
+    s21_gh:'GitHub', s21_inst:'安装', s21_docs:'文档'
+  }
+};
+
+function setLang(lang) {
+  _lang = lang;
+  document.getElementById('btn-en').classList.toggle('ls-active', lang === 'en');
+  document.getElementById('btn-zh').classList.toggle('ls-active', lang === 'zh');
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (_t[_lang] && _t[_lang][key] !== undefined) {
+      el.innerHTML = _t[_lang][key];
+    }
+  });
+  if (typeof Reveal !== 'undefined') Reveal.sync();
+}
+function toggleLang() { setLang(_lang === 'en' ? 'zh' : 'en'); }
+</script>
 <script>
 Reveal.initialize({
   width: 1280,
